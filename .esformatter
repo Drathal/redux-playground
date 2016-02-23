@@ -1,0 +1,98 @@
+{
+    "root": true,
+    "plugins": [
+        "esformatter-quotes",
+        "esformatter-jsx",
+        "esformatter-collapse-objects",
+        "esformatter-eol-last",
+        "esformatter-literal-notation",
+        "esformatter-dot-notation",
+        "esformatter-spaced-lined-comment",
+        "esformatter-braces"
+    ],
+    "preset": "default",
+    "jsx": {
+        "formatJSX": true,
+        "attrsOnSameLineAsTag": false,
+        "maxAttrsOnTag": 4,
+        "firstAttributeOnSameLine": true,
+        "spaceInJSXExpressionContainers": " ",
+        "alignWithFirstAttribute": true,
+        "htmlOptions": {
+            "brace_style": "collapse",
+            "indent_char": " ",
+            "indent_size": 4,
+            "max_preserve_newlines": 2,
+            "preserve_newlines": true,
+            "wrap_line_length": 250,
+            "eval_code": false
+        }
+    },
+    "collapseObjects": {
+        "ObjectExpression": {
+            "maxLineLength": 80,
+            "maxKeys": 4,
+            "maxDepth": 1,
+            "forbidden": [
+                "FunctionExpression"
+            ]
+        },
+        "ArrayExpression": {
+            "maxLineLength": 80,
+            "maxKeys": 4,
+            "maxDepth": 1,
+            "forbidden": [
+                "FunctionExpression"
+            ]
+        }
+    },
+    "indent": {
+        "value": "    ",
+        "ArrayExpression": 1,
+        "AssignmentExpression": 1,
+        "BinaryExpression": 1,
+        "ConditionalExpression": 1,
+        "CallExpression": 1,
+        "CatchClause": 1,
+        "DoWhileStatement": 1,
+        "ForInStatement": 1,
+        "ForStatement": 1,
+        "FunctionDeclaration": 1,
+        "FunctionExpression": 1,
+        "IfStatement": 1,
+        "MemberExpression": 1,
+        "MultipleVariableDeclaration": 1,
+        "ObjectExpression": 1,
+        "ReturnStatement": 1,
+        "SwitchCase": 1,
+        "SwitchStatement": 1,
+        "TopLevelFunctionBlock": 1,
+        "TryStatement": 1,
+        "VariableDeclaration.LogicalExpression": 1,
+        "WhileStatement": 1
+    },
+    "lineBreak": {
+        "before": {
+            "ObjectExpressionOpeningBrace": -1,
+            "ObjectExpressionClosingBrace": -1,
+            "Property": -1,
+            "PropertyName": -1
+        },
+
+        "after": {
+            "AssignmentOperator": -1,
+            "ObjectExpressionOpeningBrace": -1,
+            "ObjectExpressionClosingBrace": -1,
+            "Property": -1,
+            "PropertyName": -1
+        }
+    },
+    "whiteSpace": {
+        "value": " ",
+        "removeTrailing": 1
+    },
+    "quotes": {
+        "type": "single",
+        "avoidEscape": true
+    }
+}
