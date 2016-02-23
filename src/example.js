@@ -1,15 +1,27 @@
-import { createStore, combineReducers } from 'redux'
-import itemsReducer from './reducer/item'
+import { createStore } from 'redux'
+import checkoutReducer from './reducer/checkout'
 
-var reducer = combineReducers({items: itemsReducer})
-var store_0 = createStore(reducer)
+var store_0 = createStore(checkoutReducer)
 
 store_0.subscribe(function() {
-    console.log('store_0 has been updated. Latest store state:', store_0.getState());
+    console.log('\nstore_0 state:', store_0.getState());
 })
 
-var addItemActionCreator = function(item) {
-    return {type: 'ADD_ITEM', item: item}
+var addProductActionCreator = function(product) {
+    return {type: 'ADD_PRODUCT', product}
 }
 
-store_0.dispatch(addItemActionCreator({id: 1234, description: 'anything'}))
+var addToCartActionCreator = function(productId) {
+    return {type: 'ADD_TO_CART', productId}
+}
+
+store_0.dispatch(addProductActionCreator({id: 1, description: 'product 1'}))
+store_0.dispatch(addProductActionCreator({id: 2, description: 'product 2'}))
+store_0.dispatch(addProductActionCreator({id: 2, description: 'product 2'}))
+store_0.dispatch(addProductActionCreator({id: 3, description: 'product 3'}))
+
+store_0.dispatch(addToCartActionCreator(2))
+store_0.dispatch(addToCartActionCreator(2))
+store_0.dispatch(addToCartActionCreator(1))
+store_0.dispatch(addToCartActionCreator(1))
+store_0.dispatch(addToCartActionCreator(1))
