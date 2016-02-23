@@ -1,3 +1,5 @@
+import { ADD_TO_CART } from '../actions';
+
 export default function cart_items_quantity(state = {}, action) {
     switch (action.type) {
         case 'ADD_TO_CART':

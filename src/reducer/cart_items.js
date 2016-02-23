@@ -1,6 +1,8 @@
+import { ADD_TO_CART } from '../actions';
+
 export default function cart_items(state = [], action) {
     switch (action.type) {
-        case 'ADD_TO_CART':
+        case ADD_TO_CART:
             if (state.indexOf(action.productId) !== -1) {
                 return state;
             }
