@@ -1,15 +1,5 @@
 import { createStore, combineReducers } from 'redux'
-
-var itemsReducer = function(state = [], action) {
-    console.log('itemsReducer was called with state', state, 'and action', action)
-
-    switch (action.type) {
-        case 'ADD_ITEM':
-            return [...state, action.item]
-        default:
-            return state;
-    }
-}
+import itemsReducer from './reducer/item'
 
 var reducer = combineReducers({items: itemsReducer})
 var store_0 = createStore(reducer)
