@@ -1,4 +1,4 @@
-import { ADD_PRODUCT } from './actions';
+import { ADD_PRODUCT, DELETE_PRODUCT } from './actions';
 
 export default function (state = {}, action = {}) {
     switch (action.type) {
@@ -8,6 +8,14 @@ export default function (state = {}, action = {}) {
                 ...state,
                 [id]: action.product
             };
+        case DELETE_PRODUCT:
+            if (!state.hasOwnProperty(action.productId)) {
+                return state;
+            }
+
+            const newState = {...state}
+            delete newState[action.productId]
+            return newState
         default:
             return state;
     }

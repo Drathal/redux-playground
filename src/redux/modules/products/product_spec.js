@@ -3,7 +3,7 @@ import deepFreeze from 'deep-freeze'
 
 import { createStore } from 'redux'
 import productsReducer from './index'
-import { addProduct } from './actions'
+import { addProduct, deleteProduct } from './actions'
 
 describe('products', () => {
 
@@ -26,5 +26,19 @@ describe('products', () => {
         expect(productsReducer(stateAfter1, action2)).to.deep.equal(stateAfter2)
 
     });
+
+    it('can delete a product', () => {
+
+        const stateBefore = {1: product1}
+        const action = deleteProduct(1)
+        const stateAfter = {}
+
+        deepFreeze(stateBefore)
+        deepFreeze(action)
+
+        expect(productsReducer(stateBefore, action)).to.deep.equal(stateAfter)
+
+    });
+
 
 });
