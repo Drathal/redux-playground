@@ -1,5 +1,5 @@
 import makeStore from './app/store'
-import { addProduct } from './redux/modules/products/actions';
+import { addProduct, deleteProduct } from './redux/modules/products/actions';
 import { addCartItem } from './redux/modules/cart/actions';
 
 const store = makeStore();
@@ -19,3 +19,5 @@ store.dispatch(addCartItem(2))
 store.dispatch(addCartItem(1))
 store.dispatch(addCartItem(1))
 store.dispatch(addCartItem(1))
+
+store.dispatch(deleteProduct(1))
