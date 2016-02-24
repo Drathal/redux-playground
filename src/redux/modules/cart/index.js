@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import cartItemsReducer from './cart_items'
-import cartItemsQuantityReducer from './cart_items_quantity'
+import cartItemsReducer from '../cart_items'
+import cartItemsQuantityReducer from '../cart_quantity'
 
-var cart = combineReducers({
+const cart = combineReducers({
     items: cartItemsReducer,
     quantity: cartItemsQuantityReducer
 });

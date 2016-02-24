@@ -1,2 +1,2 @@
 # redux playground
-`npm run babel-node src/example.js`
+`npm run babel-node src/index.js`

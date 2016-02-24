@@ -1,6 +1,6 @@
-import { ADD_PRODUCT } from '../actions';
+import { ADD_PRODUCT } from './actions';
 
-var productsReducer = function(state = {}, action) {
+export default function (state = {}, action = {}) {
     switch (action.type) {
         case ADD_PRODUCT:
             const {id} = action.product;
@@ -12,5 +12,3 @@ var productsReducer = function(state = {}, action) {
             return state;
     }
 }
-
-export default productsReducer

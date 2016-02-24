@@ -27,6 +27,7 @@
     "babel-cli": "^6.5.1",
     "chai": "^3.5.0",
     "chai-immutable": "^1.5.3",
+    "deep-freeze": "0.0.1",
     "esformatter": "^0.9.1",
     "esformatter-braces": "^1.2.1",
     "esformatter-collapse-objects": "^0.5.1",
