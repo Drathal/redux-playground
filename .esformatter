@@ -4,7 +4,6 @@
         "esformatter-quotes",
         "esformatter-jsx",
         "esformatter-collapse-objects",
-        "esformatter-eol-last",
         "esformatter-literal-notation",
         "esformatter-dot-notation",
         "esformatter-spaced-lined-comment",

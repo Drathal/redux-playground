@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import deepFreeze from 'deep-freeze'
 
-import { createStore } from 'redux'
 import productsReducer from './index'
 import { addProduct, deleteProduct } from './actions'
 
@@ -10,13 +9,13 @@ describe('products', () => {
     const product1 = {'id': 1, 'description': 'product 1'};
     const product2 = {'id': 2, 'description': 'product 2'};
 
-    it('can add a product', () => {
+    it('can add products', () => {
 
-        const stateBefore = {}
+        const stateBefore = {items: {}, quantity: 0}
         const action1 = addProduct(product1)
         const action2 = addProduct(product2)
-        const stateAfter1 = {1: product1}
-        const stateAfter2 = {1: product1, 2: product2}
+        const stateAfter1 = {items: {1: product1}, quantity: 1}
+        const stateAfter2 = {items: {1: product1, 2: product2}, quantity: 2}
 
         deepFreeze(stateBefore)
         deepFreeze(action1)
@@ -29,9 +28,9 @@ describe('products', () => {
 
     it('can delete a product', () => {
 
-        const stateBefore = {1: product1}
+        const stateBefore = {items: {1: product1}, quantity: 1}
         const action = deleteProduct(1)
-        const stateAfter = {}
+        const stateAfter = {items: {}, quantity: 0}
 
         deepFreeze(stateBefore)
         deepFreeze(action)
@@ -39,6 +38,5 @@ describe('products', () => {
         expect(productsReducer(stateBefore, action)).to.deep.equal(stateAfter)
 
     });
-
 
 });

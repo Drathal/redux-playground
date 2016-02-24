@@ -1,23 +1,24 @@
 import makeStore from './app/store'
-import { addProduct, deleteProduct } from './redux/modules/products/actions';
-import { addCartItem } from './redux/modules/cart/actions';
+import * as productAction from './redux/modules/products/actions';
+import * as cartAction from './redux/modules/cart/actions';
+import { render } from 'prettyjson';
 
 const store = makeStore();
-console.log('-------------------------\nstore init state', store.getState());
+console.log('-------------------------\n', render(store.getState()));
 
 store.subscribe(function() {
-    console.log('-------------------------\nstore state:', store.getState());
+    console.log('-------------------------\n', render(store.getState()));
 })
 
-store.dispatch(addProduct({id: 1, description: 'product 1'}))
-store.dispatch(addProduct({id: 2, description: 'product 2'}))
-store.dispatch(addProduct({id: 2, description: 'product 2'}))
-store.dispatch(addProduct({id: 3, description: 'product 3'}))
+store.dispatch(productAction.addProduct({id: 1, description: 'product 1'}))
+store.dispatch(productAction.addProduct({id: 2, description: 'product 2'}))
+store.dispatch(productAction.addProduct({id: 2, description: 'product 2'}))
+store.dispatch(productAction.addProduct({id: 3, description: 'product 3'}))
 
-store.dispatch(addCartItem(2))
-store.dispatch(addCartItem(2))
-store.dispatch(addCartItem(1))
-store.dispatch(addCartItem(1))
-store.dispatch(addCartItem(1))
+store.dispatch(cartAction.addItem(2))
+store.dispatch(cartAction.addItem(2))
+store.dispatch(cartAction.addItem(1))
+store.dispatch(cartAction.addItem(1))
+store.dispatch(cartAction.addItem(1))
 
-store.dispatch(deleteProduct(1))
+store.dispatch(productAction.deleteProduct(3))
