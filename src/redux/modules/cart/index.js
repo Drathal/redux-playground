@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import { ADD_TO_CART, DELETE_FROM_CART, INCREMENT_CARTITEM_QUANTITY, DECREMENT_CARTITEM_QUANTITY } from './actions';
+import { ADD_TO_CART, DELETE_FROM_CART, REMOVE_FROM_CART, INCREMENT_CARTITEM_QUANTITY, DECREMENT_CARTITEM_QUANTITY } from './actions';
 
 const initialState = {
     items: [],
     quantityById: {}
 }
 
-function cart_items_quantity(state = initialState.quantityById, action) {
+const quantityById = (state = initialState.quantityById, action) => {
 
     switch (action.type) {
         case ADD_TO_CART:
@@ -43,7 +43,7 @@ function cart_items_quantity(state = initialState.quantityById, action) {
     }
 }
 
-function cart_items(state = initialState.items, action) {
+const items = (state = initialState.items, action) => {
 
     switch (action.type) {
         case ADD_TO_CART:
@@ -63,11 +63,21 @@ function cart_items(state = initialState.items, action) {
 }
 
 export default function cart(state = initialState, action) {
+
+    // Ok i have to refactor that ;D
+    let newAction = {...action};
+
     switch (action.type) {
-        default:
-            return {
-                items: cart_items(state.items, action),
-                quantityById: cart_items_quantity(state.quantityById, action)
-            };
+        case REMOVE_FROM_CART:
+            if (state.quantityById[action.productId] === 1) {
+                newAction.type = DELETE_FROM_CART
+            } else {
+                newAction.type = DECREMENT_CARTITEM_QUANTITY
+            }
     }
+
+    return {
+        items: items(state.items, newAction),
+        quantityById: quantityById(state.quantityById, newAction)
+    };
 }
