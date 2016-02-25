@@ -19,4 +19,4 @@ store.dispatch(cartAction.addItem(1))
 
 store.dispatch(productAction.deleteProduct(3))
 
-store.dispatch(cartAction.removeItem(1))
+store.dispatch(cartAction.decrementQuantity(1))
