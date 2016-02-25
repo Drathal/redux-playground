@@ -13,7 +13,7 @@ export default function makeStore(enableLogger = true) {
     var middleware = [promiseMiddleware, thunkMiddleware]
 
     if (enableLogger) {
-        middleware = [...middleware, loggerMiddleware];
+        middleware = [...middleware, loggerMiddleware]
     }
 
     return createStore(

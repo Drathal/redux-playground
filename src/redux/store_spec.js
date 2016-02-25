@@ -5,9 +5,9 @@ import * as cartAction from './modules/cart/actions';
 
 describe('store', () => {
 
-    const product1 = {'id': 1, 'description': 'product 1'};
-    const product2 = {'id': 2, 'description': 'product 2'};
-    const product3 = {'id': 3, 'description': 'product 3'};
+    const product1 = {'id': 1, 'description': 'product 1'}
+    const product2 = {'id': 2, 'description': 'product 2'}
+    const product3 = {'id': 3, 'description': 'product 3'}
 
     it('can dispatch cart and product actions', () => {
 
