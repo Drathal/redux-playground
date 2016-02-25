@@ -3,21 +3,21 @@ import createLogger from 'redux-node-logger'
 import promiseMiddleware from 'redux-promise'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 
-import productsReducer from '../redux/modules/products'
-import cartReducer from '../redux/modules/cart'
+import products from '../redux/modules/products'
+import cart from '../redux/modules/cart'
 
 const loggerMiddleware = createLogger({downArrow: '*', rightArrow: '>'})
 
-export default function makeStore() {
+export default function makeStore(enableLogger = true) {
+
+    var middleware = [promiseMiddleware, thunkMiddleware]
+
+    if (enableLogger) {
+        middleware = [...middleware, loggerMiddleware];
+    }
+
     return createStore(
-        combineReducers({
-            products: productsReducer,
-            cart: cartReducer
-        }),
-        applyMiddleware(
-            promiseMiddleware,
-            thunkMiddleware,
-            loggerMiddleware
-        )
+        combineReducers({products, cart}),
+        applyMiddleware(...middleware)
     )
 }

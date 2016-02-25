@@ -1,7 +1,12 @@
 import { combineReducers } from 'redux'
 import { ADD_PRODUCT, DELETE_PRODUCT } from './actions';
 
-function product_items(state = {}, action = {}) {
+const initialState = {
+    items: {},
+    quantity: 0
+}
+
+function items(state = initialState.items, action = {}) {
     switch (action.type) {
         case ADD_PRODUCT:
             const {id} = action.product;
@@ -22,18 +27,23 @@ function product_items(state = {}, action = {}) {
     }
 }
 
-function product_quantity(state = 0, action = {}) {
+function getQuantity(items) {
+    return Object.keys(items).length
+}
+
+/**
+ * main cart reducer
+ */
+export default function products(state = initialState, action) {
+
     switch (action.type) {
         case ADD_PRODUCT:
-            return state + 1
         case DELETE_PRODUCT:
-            return state - 1
+            return {
+                items: items(state.items, action),
+                quantity: getQuantity(items(state.items, action))
+            };
         default:
             return state;
     }
 }
-
-export default combineReducers({
-    items: product_items,
-    quantity: product_quantity
-})
