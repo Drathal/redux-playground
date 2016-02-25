@@ -1,5 +1,5 @@
 import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-node-logger'
+import createLogger from 'redux-logger'
 import promiseMiddleware from 'redux-promise'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 
@@ -8,7 +8,7 @@ import cart from '../redux/modules/cart'
 
 const loggerMiddleware = createLogger({downArrow: '*', rightArrow: '>'})
 
-export default function makeStore(enableLogger = true) {
+export default function makeStore(enableLogger = false) {
 
     var middleware = [promiseMiddleware, thunkMiddleware]
 

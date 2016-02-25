@@ -6,27 +6,13 @@ import { Provider } from 'react-redux'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
+import makeStore from './store'
 import App from '../containers/App'
 
-/*
-import reducer from './reducers'
-import { getAllProducts } from './actions'
-import App from './containers/App'
-
-const middleware = process.env.NODE_ENV === 'production' ? [thunk] : [thunk, logger()]
-
-const store = createStore(
-    reducer,
-    applyMiddleware(...middleware)
-)
-
-store.dispatch(getAllProducts())
-
- store={ store }
-*/
+let store = makeStore();
 
 render(
-    <Provider>
+    <Provider store={ store }>
         <App />
     </Provider>,
     document.getElementById('root')
