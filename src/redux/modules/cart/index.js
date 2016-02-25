@@ -6,6 +6,9 @@ const initialState = {
     quantityById: {}
 }
 
+/**
+ * manage quantity for cart items
+ */
 const quantityById = (state = initialState.quantityById, action) => {
 
     switch (action.type) {
@@ -43,6 +46,9 @@ const quantityById = (state = initialState.quantityById, action) => {
     }
 }
 
+/**
+ * manage unique cart items
+ */
 const items = (state = initialState.items, action) => {
 
     switch (action.type) {
@@ -62,12 +68,15 @@ const items = (state = initialState.items, action) => {
     }
 }
 
+/**
+ * main cart reducer
+ */
 export default function cart(state = initialState, action) {
 
-    // Ok i have to refactor that ;D
     let newAction = {...action};
 
     switch (action.type) {
+        // when item quantity is 1 then completly remove item
         case DECREMENT_CARTITEM_QUANTITY:
             if (state.quantityById[action.productId] === 1) {
                 newAction.type = DELETE_FROM_CART
