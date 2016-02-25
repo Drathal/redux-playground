@@ -84,23 +84,10 @@ describe('cart', () => {
 
     });
 
-    it('REMOVE_FROM_CART', () => {
-
-        const stateBefore = {items: [1], quantityById: {1: 2}}
-        const action = actions.removeItem(1)
-        const stateAfter = {items: [1], quantityById: {1: 1}}
-
-        deepFreeze(stateBefore)
-        deepFreeze(action)
-
-        expect(stateAfter).to.deep.equal(cartReducer(stateBefore, action))
-
-    });
-
-    it('REMOVE_FROM_CART 2', () => {
+    it('can remove an item when there is only one in cart', () => {
 
         const stateBefore = {items: [1], quantityById: {1: 1}}
-        const action = actions.removeItem(1)
+        const action = actions.decrementQuantity(1)
         const stateAfter = {items: [], quantityById: {}}
 
         deepFreeze(stateBefore)

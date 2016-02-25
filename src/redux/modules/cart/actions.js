@@ -21,7 +21,3 @@ export const decrementQuantity = (productId) => {
 export const incrementQuantity = (productId) => {
     return {type: INCREMENT_CARTITEM_QUANTITY, productId}
 }
-
-export const removeItem = (productId) => {
-    return {type: REMOVE_FROM_CART, productId}
-}

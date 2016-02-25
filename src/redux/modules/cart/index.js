@@ -68,11 +68,9 @@ export default function cart(state = initialState, action) {
     let newAction = {...action};
 
     switch (action.type) {
-        case REMOVE_FROM_CART:
+        case DECREMENT_CARTITEM_QUANTITY:
             if (state.quantityById[action.productId] === 1) {
                 newAction.type = DELETE_FROM_CART
-            } else {
-                newAction.type = DECREMENT_CARTITEM_QUANTITY
             }
     }
 
