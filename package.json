@@ -7,7 +7,7 @@
     "babel-node": "babel-node",
     "test": "mocha src/**/*_spec.js -R mocha-better-spec-reporter --reporter-options stack-exclude=**/node_modules/** --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
     "test:watch": "npm run test -- --watch",
-    "start": "node server.js"
+    "start": "node server/server.js"
   },
   "license": "MIT",
   "repository": {
