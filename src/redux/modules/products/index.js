@@ -3,6 +3,7 @@ import { ADD_PRODUCT, DELETE_PRODUCT } from './actions';
 
 const initialState = {
     items: {},
+    itemList: [],
     quantity: 0
 }
 
@@ -31,6 +32,14 @@ function getQuantity(items) {
     return Object.keys(items).length
 }
 
+function getItemList(items) {
+    let list = []
+    Object.keys(items).map((productId) => {
+        list = [...list, items[productId]]
+    })
+    return list
+}
+
 /**
  * main cart reducer
  */
@@ -41,6 +50,7 @@ export default function products(state = initialState, action) {
         case DELETE_PRODUCT:
             return {
                 items: items(state.items, action),
+                itemList: getItemList(items(state.items, action)),
                 quantity: getQuantity(items(state.items, action))
             };
         default:
