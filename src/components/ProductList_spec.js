@@ -13,4 +13,11 @@ describe('component', () => {
 
     });
 
+    it('can render a ProductList component with children', () => {
+
+        const wrapper = mount(<ProductsList title='TestTitle' children='childs' />);
+        expect(wrapper.html()).to.equal('<div><h3>TestTitle</h3><div>childs</div></div>')
+
+    });
+
 });
