@@ -1,5 +1,9 @@
 # redux playground
 
+## build
+
+    npm run build
+
 ## start app
 
     npm start
