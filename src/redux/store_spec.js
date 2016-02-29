@@ -16,6 +16,7 @@ describe('store', () => {
         const stateBefore = {
             products: {
                 items: {},
+                itemList: [],
                 quantity: 0
             },
             cart: {
@@ -27,6 +28,7 @@ describe('store', () => {
         const stateAfter = {
             products: {
                 items: {'1': product1, '2': product2},
+                itemList: [product1, product2],
                 quantity: 2
             },
             cart: {
