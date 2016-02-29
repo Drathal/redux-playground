@@ -1,12 +1,25 @@
 var path = require('path')
 var webpack = require('webpack')
-
 var isProduction = !!process.argv.find(x => x == '-p')
 
-var entry = {app: ['./index', 'webpack-hot-middleware/client']}
+var entry = {app: ['./index', 'webpack-hot-middleware/client'], vendor: [
+        'react',
+        'react-dom',
+        'redux',
+        'redux-promise',
+        'redux-thunk',
+        'redux-logger',
+        'babel-polyfill'
+]}
+var plugins = [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: Infinity, filename: 'vendor.js'})
+]
 
 if (isProduction) {
-    entry = {app: ['./index'], vendor: ['react', 'react-dom', 'redux', 'redux-promise', 'redux-thunk', 'redux-logger', 'babel-polyfill']}
+    plugins.push(new webpack.optimize.UglifyJsPlugin({mangle: true, compress: {warnings: false}}))
 }
 
 module.exports = {
@@ -17,13 +30,11 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/build/'
     },
-    plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: Infinity, filename: 'vendor.js'}),
-        new webpack.optimize.UglifyJsPlugin({mangle: true, compress: {warnings: false}})
-    ],
+    plugins,
+    externals: {
+        'jsdom': 'window',
+        'react/lib/ExecutionEnvironment': true
+    },
     module: {
         loaders: [
             {
