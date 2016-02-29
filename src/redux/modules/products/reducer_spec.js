@@ -4,7 +4,8 @@ import deepFreeze from 'deep-freeze'
 import productsReducer from './index'
 import { addProduct, deleteProduct } from './actions'
 
-describe('products', () => {
+
+describe('reducer products', () => {
 
     const product1 = {'id': 1, 'description': 'product 1'};
     const product2 = {'id': 2, 'description': 'product 2'};

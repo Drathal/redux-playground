@@ -4,7 +4,8 @@ import deepFreeze from 'deep-freeze'
 import cartReducer from './index'
 import * as actions from './actions'
 
-describe('cart', () => {
+
+describe('reducer cart', () => {
 
     it('can add an item', () => {
 

@@ -4,7 +4,8 @@ import { shallow, mount, render } from 'enzyme';
 
 import ProductsList from './ProductsList'
 
-describe('component', () => {
+
+describe('component <ProductList />', () => {
 
     it('can render a ProductList component', () => {
 
