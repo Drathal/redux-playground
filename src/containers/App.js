@@ -22,13 +22,7 @@ export default class App extends Component {
     }
 }
 
-App.propTypes = {
-    products: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired
-    })).isRequired,
-    addProduct: PropTypes.func.isRequired
-}
+App.propTypes = {addProduct: PropTypes.func.isRequired}
 
 function mapStateToProps(state) {
     return {products: state.products.itemList}
