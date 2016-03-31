@@ -20,7 +20,7 @@ class ProductsContainer extends Component {
 
         return (
             <ProductsList title="My Products">
-                { products.map((product) => <p key={ product.id }>
+                { products.map((product) => <p className='product' key={ product.id }>
                                                 { product.id }
                                                 <span>-</span>
                                                 { product.description }

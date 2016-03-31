@@ -11,19 +11,12 @@ describe('container <App  />', () => {
 
     it('can render the App container ', () => {
         let store = makeStore();
-        const wrapper = render(<Provider store={ store }>
-                                   <App/>
-                               </Provider>);
-        expect(wrapper.html()).to.equal('<div><h1>My Redux Playground</h1><div><h3>My Products</h3><div><button>ADD RANDOM PRODUCT</button></div></div></div>')
-    });
-
-    it('can render the App container with ProductList', () => {
-        let store = makeStore();
-        store.dispatch(productAction.addProduct({'id': 1, 'description': 'product 1'}))
-        const wrapper = render(<Provider store={ store }>
-                                   <App/>
-                               </Provider>);
-        expect(wrapper.html()).to.equal('<div><h1>My Redux Playground</h1><div><h3>My Products</h3><div><p>1 &#xA0;-&#xA0;product 1<button>x</button></p><button>ADD RANDOM PRODUCT</button></div></div></div>')
+        const jsx = <Provider store={ store }>
+                        <App/>
+                    </Provider>
+        expect(mount(jsx).find('h1').length).to.equal(1);
+        expect(mount(jsx).find('h3').length).to.equal(1);
+        expect(mount(jsx).find('p.product').length).to.equal(3);
     });
 
 });

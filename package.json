@@ -73,6 +73,8 @@
     "mocha": "^2.4.5",
     "mocha-better-spec-reporter": "^3.0.1",
     "react-addons-test-utils": "^0.14.7",
+    "redux-devtools": "^3.1.1",
+    "redux-devtools-log-monitor": "^1.0.5",
     "updatr": "^0.1.1",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
