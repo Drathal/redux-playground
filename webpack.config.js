@@ -2,7 +2,11 @@ var path = require('path')
 var webpack = require('webpack')
 var isProduction = !!process.argv.find(x => x == '-p')
 
-var entry = {app: ['./index', 'webpack-hot-middleware/client'], vendor: [
+var entry = {
+    app: [
+        './index', 'webpack-hot-middleware/client'
+    ],
+    vendor: [
         'react',
         'react-dom',
         'redux',
@@ -10,7 +14,9 @@ var entry = {app: ['./index', 'webpack-hot-middleware/client'], vendor: [
         'redux-thunk',
         'redux-logger',
         'babel-polyfill'
-]}
+    ]
+}
+
 var plugins = [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),

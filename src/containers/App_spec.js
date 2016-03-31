@@ -15,7 +15,6 @@ describe('container <App  />', () => {
                                    <App/>
                                </Provider>);
         expect(wrapper.html()).to.equal('<div><h1>My Redux Playground</h1><div><h3>My Products</h3><div><button>ADD RANDOM PRODUCT</button></div></div></div>')
-
     });
 
     it('can render the App container with ProductList', () => {
@@ -25,7 +24,6 @@ describe('container <App  />', () => {
                                    <App/>
                                </Provider>);
         expect(wrapper.html()).to.equal('<div><h1>My Redux Playground</h1><div><h3>My Products</h3><div><p>1 &#xA0;-&#xA0;product 1<button>x</button></p><button>ADD RANDOM PRODUCT</button></div></div></div>')
-
     });
 
 });
