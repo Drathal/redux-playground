@@ -1,5 +1,7 @@
 # redux playground
 
+    Just a little playground for react and redux
+
 ## build
 
     npm run build
