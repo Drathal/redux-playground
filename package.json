@@ -9,7 +9,7 @@
     "test:watch": "better-npm-run mocha:test --watch",
     "build": "better-npm-run build:production",
     "start": "better-npm-run start:dev",
-    "update": "updatr"
+    "update": "updtr"
   },
   "betterScripts": {
     "mocha:test": {
@@ -46,8 +46,8 @@
     "redux": "^3.3.1",
     "redux-logger": "^2.6.0",
     "redux-node-logger": "0.0.3",
-    "redux-promise": "^0.5.1",
-    "redux-thunk": "^1.0.3"
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -75,9 +75,9 @@
     "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.1.1",
     "redux-devtools-log-monitor": "^1.0.5",
-    "updatr": "^0.1.1",
+    "updtr": "^0.1.10",
     "webpack": "^1.12.14",
-    "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.7.1"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
   }
 }

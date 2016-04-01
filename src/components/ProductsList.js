@@ -5,7 +5,7 @@ export default class ProductsList extends Component {
         return (
             <div>
                 <h3>{ this.props.title }</h3>
-                <div>
+                <div className='products'>
                     { this.props.children }
                 </div>
             </div>
