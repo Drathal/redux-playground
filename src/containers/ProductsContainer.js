@@ -18,21 +18,19 @@ class ProductsContainer extends Component {
 
         const {products} = this.props;
 
-        return (
-            <ProductsList title="My Products">
-                { products.map((product) => <p className='product' key={ product.id }>
-                                                { product.id }
-                                                <span>-</span>
-                                                { product.description }
-                                                <button onClick={ doDeleteProduct.bind(this, product) }>
-                                                    x
-                                                </button>
-                                            </p>) }
-                <button onClick={ doAddProduct.bind(this) }>
-                    ADD RANDOM PRODUCT
-                </button>
-            </ProductsList>
-        )
+        return (<ProductsList title="My Products">
+                    { products.map((product) => <p className='product' key={ product.id }>
+                                                    { product.id }
+                                                    <span>-</span>
+                                                    { product.description }
+                                                    <button onClick={ doDeleteProduct.bind(this, product) }>
+                                                        x
+                                                    </button>
+                                                </p>) }
+                    <button className='addProduct' onClick={ doAddProduct.bind(this) }>
+                        ADD RANDOM PRODUCT
+                    </button>
+                </ProductsList>)
     }
 }
 
