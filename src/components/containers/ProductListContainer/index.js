@@ -4,7 +4,10 @@ import { connect } from 'react-redux'
 import ProductsList from '../../views/ProductList'
 import { addProduct, deleteProduct } from '../../../redux/modules/products/actions'
 
-class ProductListContainer extends Component {
+@connect((state) => {
+    return {products: state.products.itemList}
+}, {addProduct, deleteProduct})
+export default class ProductListContainer extends Component {
 
     _doAddProduct = function() {
         let id = Math.floor(Math.random() * (100 - 5) + 5);
@@ -22,9 +25,3 @@ class ProductListContainer extends Component {
                               deleteProduct={ this._doDeleteProduct.bind(this) }></ProductsList>)
     }
 }
-
-function mapStateToProps(state) {
-    return {products: state.products.itemList}
-}
-
-export default connect(mapStateToProps, {addProduct, deleteProduct})(ProductListContainer)
