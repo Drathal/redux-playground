@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-export default function(props) {
+const LayoutMain = (props) => {
     return (
         <div className="app">
-            <h1>{ props.title }</h1>
+            <h1>{ props.messages.title }</h1>
             <main>
                 { props.children }
             </main>
         </div>
     )
 }
+
+LayoutMain.defaultProps = {
+    messages: {
+        title: 'LAYOUTMAIN_TITLE'
+    }
+};
+
+LayoutMain.propTypes = {messages: PropTypes.object}
+
+export default LayoutMain
