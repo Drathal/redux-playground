@@ -11,7 +11,7 @@ describe('component view <ProductList />', () => {
     const onAddProduct = sinon.spy()
     const onDeleteProduct = sinon.spy()
 
-    it('can render a ProductList component', () => {
+    it('can render ProductList', () => {
         const wrapper = shallow(<ProductsList title='TestTitle' products={ products } addProduct={ onAddProduct } deleteProduct={ onDeleteProduct } />);
         expect(wrapper.html()).to.equal('<div><h3>TestTitle</h3><div class="products"><p class="product">1<span>-</span>desc<button class="deleteProduct">x</button></p><button class="addProduct">ADD RANDOM PRODUCT</button></div></div>')
 

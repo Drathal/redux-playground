@@ -9,7 +9,7 @@ import ProductsList from '../views/ProductsList'
 
 describe('component container <ProductListContainer  />', () => {
 
-    it('can render the ProductListContainer container ', () => {
+    it('can render ProductListContainer ', () => {
         let store = makeStore();
         let jsx = <Provider store={ store }>
                       <ProductListContainer />
