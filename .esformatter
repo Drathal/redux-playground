@@ -3,7 +3,6 @@
     "plugins": [
         "esformatter-quotes",
         "esformatter-jsx",
-        "esformatter-collapse-objects",
         "esformatter-literal-notation",
         "esformatter-dot-notation",
         "esformatter-spaced-lined-comment",
@@ -13,7 +12,7 @@
     "jsx": {
         "formatJSX": true,
         "attrsOnSameLineAsTag": false,
-        "maxAttrsOnTag": 4,
+        "maxAttrsOnTag": 1,
         "firstAttributeOnSameLine": true,
         "spaceInJSXExpressionContainers": " ",
         "alignWithFirstAttribute": true,
@@ -24,25 +23,7 @@
             "max_preserve_newlines": 2,
             "preserve_newlines": true,
             "wrap_line_length": 250,
-            "eval_code": false
-        }
-    },
-    "collapseObjects": {
-        "ObjectExpression": {
-            "maxLineLength": 80,
-            "maxKeys": 4,
-            "maxDepth": 1,
-            "forbidden": [
-                "FunctionExpression"
-            ]
-        },
-        "ArrayExpression": {
-            "maxLineLength": 80,
-            "maxKeys": 4,
-            "maxDepth": 1,
-            "forbidden": [
-                "FunctionExpression"
-            ]
+            "eval_code": true
         }
     },
     "indent": {

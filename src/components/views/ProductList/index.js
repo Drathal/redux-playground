@@ -6,15 +6,18 @@ const ProductList = (props) => {
         <div>
             <h3>{ props.messages.title }</h3>
             <div className='products'>
-                { (props.products || []).map((product) => <p className='product' key={ product.id }>
+                { (props.products || []).map((product) => <p className='product'
+                                                             key={ product.id }>
                                                               { product.id }
                                                               <span>-</span>
                                                               { product.description }
-                                                              <button className='deleteProduct' onClick={ props.deleteProduct.bind(this, product) }>
+                                                              <button className='deleteProduct'
+                                                                      onClick={ props.deleteProduct.bind(this, product) }>
                                                                   { props.messages.deleteProductButton }
                                                               </button>
                                                           </p>) }
-                <button className='addProduct' onClick={ props.addProduct.bind(this) }>
+                <button className='addProduct'
+                        onClick={ props.addProduct.bind(this) }>
                     { props.messages.addProductButton }
                 </button>
             </div>
@@ -22,7 +25,7 @@ const ProductList = (props) => {
     )
 }
 
-ProductList.defaultProps = {messages: messages};
+ProductList.defaultProps = {messages};
 
 ProductList.propTypes = {
     messages: PropTypes.object,

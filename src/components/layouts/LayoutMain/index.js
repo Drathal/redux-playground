@@ -12,7 +12,7 @@ const LayoutMain = (props) => {
     )
 }
 
-LayoutMain.defaultProps = {messages: messages};
+LayoutMain.defaultProps = {messages};
 LayoutMain.propTypes = {messages: PropTypes.object}
 
 export default LayoutMain
