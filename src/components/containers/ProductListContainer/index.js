@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import ProductsList from '../views/ProductList'
-import { addProduct, deleteProduct } from '../../redux/modules/products/actions'
+import ProductsList from '../../views/ProductList'
+import { addProduct, deleteProduct } from '../../../redux/modules/products/actions'
 
 class ProductListContainer extends Component {
 
@@ -16,7 +16,10 @@ class ProductListContainer extends Component {
     }
 
     render() {
-        return (<ProductsList title="My Products" products={ this.props.products } addProduct={ this._doAddProduct.bind(this) } deleteProduct={ this._doDeleteProduct.bind(this) }></ProductsList>)
+        return (<ProductsList title="My Products"
+                              products={ this.props.products }
+                              addProduct={ this._doAddProduct.bind(this) }
+                              deleteProduct={ this._doDeleteProduct.bind(this) }></ProductsList>)
     }
 }
 

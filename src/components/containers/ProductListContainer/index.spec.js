@@ -3,9 +3,9 @@ import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
 import { Provider } from 'react-redux'
 
-import makeStore from '../../app/store'
-import ProductListContainer from '../containers/ProductListContainer'
-import ProductsList from '../views/ProductList'
+import makeStore from '../../../app/store'
+import ProductListContainer from '../../containers/ProductListContainer'
+import ProductsList from '../../views/ProductList'
 
 describe('component container <ProductListContainer  />', () => {
 
