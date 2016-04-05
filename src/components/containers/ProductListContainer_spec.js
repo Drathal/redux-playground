@@ -1,0 +1,21 @@
+import React from 'react';
+import { expect } from 'chai';
+import { shallow, mount, render } from 'enzyme';
+import { Provider } from 'react-redux'
+
+import makeStore from '../../app/store'
+import ProductListContainer from '../containers/ProductListContainer'
+import ProductsList from '../views/ProductsList'
+
+describe('component container <ProductListContainer  />', () => {
+
+    it('can render the ProductListContainer container ', () => {
+        let store = makeStore();
+        let jsx = <Provider store={ store }>
+                      <ProductListContainer />
+                  </Provider>
+
+        expect(mount(jsx).find(ProductsList).length).to.equal(1);
+    });
+
+});
