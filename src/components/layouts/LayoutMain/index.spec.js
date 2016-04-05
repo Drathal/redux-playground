@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import LayoutMain from './LayoutMain'
+import LayoutMain from '../LayoutMain'
 
 describe('component layout <LayoutMain />', () => {
 

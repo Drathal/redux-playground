@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
 import sinon from 'sinon';
 
-import ProductsList from './ProductsList'
+import ProductsList from '../ProductList'
 
 describe('component view <ProductList />', () => {
 

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 import makeStore from '../../app/store'
 import ProductListContainer from '../containers/ProductListContainer'
-import ProductsList from '../views/ProductsList'
+import ProductsList from '../views/ProductList'
 
 describe('component container <ProductListContainer  />', () => {
 

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import messages from './en'
 
 const ProductList = (props) => {
     return (
@@ -21,13 +22,7 @@ const ProductList = (props) => {
     )
 }
 
-ProductList.defaultProps = {
-    messages: {
-        title: 'PRODUCTLIST_TITLE',
-        addProductButton: 'PRODUCTLIST_ADD_PRODUCT_BUTTON',
-        deleteProductButton: 'PRODUCTLIST_DELETE_PRODUCT_BUTTON'
-    }
-};
+ProductList.defaultProps = {messages: messages};
 
 ProductList.propTypes = {
     messages: PropTypes.object,

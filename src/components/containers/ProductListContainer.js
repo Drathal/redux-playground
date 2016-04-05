@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import ProductsList from '../views/ProductsList'
+import ProductsList from '../views/ProductList'
 import { addProduct, deleteProduct } from '../../redux/modules/products/actions'
 
 class ProductListContainer extends Component {

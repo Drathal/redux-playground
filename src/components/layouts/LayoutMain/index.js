@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import messages from './en'
 
 const LayoutMain = (props) => {
     return (
@@ -11,12 +12,7 @@ const LayoutMain = (props) => {
     )
 }
 
-LayoutMain.defaultProps = {
-    messages: {
-        title: 'LAYOUTMAIN_TITLE'
-    }
-};
-
+LayoutMain.defaultProps = {messages: messages};
 LayoutMain.propTypes = {messages: PropTypes.object}
 
 export default LayoutMain
