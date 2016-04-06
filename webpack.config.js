@@ -17,6 +17,21 @@ var entry = {
     ]
 }
 
+var loaders = [
+    {
+        test: /\.js$/,
+        loaders: ['babel'],
+        exclude: /node_modules/,
+        include: __dirname
+    },
+    {
+        test: /\.json$/,
+        loaders: ['json'],
+        exclude: /node_modules/,
+        include: __dirname
+    }
+];
+
 var plugins = [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -24,8 +39,23 @@ var plugins = [
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: Infinity, filename: 'vendor.js'})
 ]
 
+if (!isProduction) {
+    loaders.push({
+        test: /\.css$/,
+        loaders: [
+            'style?sourceMap',
+            'css?modules&importLoaders=1&localIdentName=[path]_[name]_[local]_[hash:base64:5]'
+        ]
+    });
+}
+
 if (isProduction) {
     plugins.push(new webpack.optimize.UglifyJsPlugin({mangle: true, compress: {warnings: false}}))
+    plugins.push(new ExtractTextPlugin('app.css', {allChunks: true}))
+    loaders.push({
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]')
+    })
 }
 
 module.exports = {
@@ -42,19 +72,6 @@ module.exports = {
         'react/lib/ExecutionEnvironment': true
     },
     module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loaders: ['babel'],
-                exclude: /node_modules/,
-                include: __dirname
-            },
-            {
-                test: /\.json$/,
-                loaders: ['json'],
-                exclude: /node_modules/,
-                include: __dirname
-            }
-        ]
+        loaders
     }
 }

@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react'
+import CSSModules from 'react-css-modules';
+import styles from './style.css';
 import messages from './en'
 
 const ProductList = (props) => {
@@ -12,11 +14,13 @@ const ProductList = (props) => {
                                                               <span>-</span>
                                                               { product.description }
                                                               <button className='deleteProduct'
+                                                                      styleName='button'
                                                                       onClick={ props.deleteProduct.bind(this, product) }>
                                                                   { props.messages.deleteProductButton }
                                                               </button>
                                                           </p>) }
                 <button className='addProduct'
+                        styleName='button'
                         onClick={ props.addProduct.bind(this) }>
                     { props.messages.addProductButton }
                 </button>
@@ -37,4 +41,4 @@ ProductList.propTypes = {
     deleteProduct: PropTypes.func.isRequired
 }
 
-export default ProductList
+export default CSSModules(ProductList, styles, {errorWhenNotFound: false})
