@@ -15,11 +15,9 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/../src/app/index.html'))
 })
 
-/*
 app.get('/products', function(req, res) {
     res.sendFile(path.join(__dirname, '/../server/products.json'))
 })
-*/
 
 app.listen(port, function(error) {
     if (error) {
