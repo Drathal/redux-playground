@@ -22,7 +22,7 @@ export default class ProductListContainer extends Component {
     componentDidMount = function() {
         getProducts().then(response => {
             response.data.map(product=>{
-                this.props.addProduct(product)
+                //this.props.addProduct(product)
             })
         });
     }

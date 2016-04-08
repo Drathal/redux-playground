@@ -19,6 +19,7 @@ const ProductList = (props) => {
                                                                             label={ props.messages.deleteProductButton }
                                                                             onTouchTap={ props.deleteProduct.bind(this, product) } />
                                                           </div>) }
+                { props.products.length === 0 && <h3>{ props.messages.noProducts }</h3> }
                 <RaisedButton className='addProduct'
                               label={ props.messages.addProductButton }
                               primary={ true }
