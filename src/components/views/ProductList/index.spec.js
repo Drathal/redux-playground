@@ -18,6 +18,9 @@ describe('component view <ProductList />', () => {
                                               deleteProduct={ onDeleteProduct } />);
 
         expect(wrapper.html().includes(messages.title)).to.equal(true)
+        expect(wrapper.html().includes(messages.addProductButton)).to.equal(true)
+        expect(wrapper.html().includes(messages.deleteProductButton)).to.equal(true)
+
         expect(wrapper.html().includes(products[0].description)).to.equal(true)
         expect(wrapper.html().includes(products[0].id)).to.equal(true)
 
