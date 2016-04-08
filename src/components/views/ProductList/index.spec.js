@@ -30,11 +30,17 @@ describe('component view <ProductList />', () => {
     it('can handle addProduct', () => {
         wrapper.find('.addProduct').simulate('touchTap')
         expect(onAddProduct.calledOnce).to.equal(true)
+
+        wrapper.find('.addProduct').simulate('click')
+        expect(onAddProduct.calledTwice).to.equal(true)
     });
 
     it('can handle deleteProduct', () => {
         wrapper.find('.deleteProduct-777').simulate('touchTap')
         expect(onDeleteProduct.calledOnce).to.equal(true)
+
+        wrapper.find('.deleteProduct-777').simulate('click')
+        expect(onDeleteProduct.calledTwice).to.equal(true)
     });
 
 });

@@ -17,11 +17,13 @@ const ProductList = (props) => {
                                                               <RaisedButton className={ 'deleteProduct' + ' deleteProduct-' + product.id }
                                                                             secondary={ true }
                                                                             label={ props.messages.deleteProductButton }
+                                                                            onClick={ props.deleteProduct.bind(this, product) }
                                                                             onTouchTap={ props.deleteProduct.bind(this, product) } />
                                                           </div>) }
                 <RaisedButton className='addProduct'
                               label={ props.messages.addProductButton }
                               primary={ true }
+                              onClick={ props.addProduct.bind(this) }
                               onTouchTap={ props.addProduct.bind(this) } />
             </div>
         </div>
