@@ -28,12 +28,12 @@ describe('component view <ProductList />', () => {
     });
 
     it('can handle addProduct', () => {
-        wrapper.find('button.addProduct').simulate('click')
+        wrapper.find('.addProduct').simulate('touchTap')
         expect(onAddProduct.calledOnce).to.equal(true)
     });
 
     it('can handle deleteProduct', () => {
-        wrapper.find('button.deleteProduct').simulate('click')
+        wrapper.find('.deleteProduct-777').simulate('touchTap')
         expect(onDeleteProduct.calledOnce).to.equal(true)
     });
 
