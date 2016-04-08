@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-export function getProducts(endpoint = 'http://localhost:3000/products') {
+// todo: remove localhost and add host env var
+export function getProducts(endpoint = '//localhost:3000/products') {
     return axios.get(endpoint)
         .then(response => {
             return response;
