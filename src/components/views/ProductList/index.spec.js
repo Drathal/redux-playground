@@ -8,7 +8,7 @@ import messages from './en.js'
 
 describe('component view <ProductList />', () => {
 
-    const products = [{id: 1, description: 'desc'}]
+    const products = [{id: 777, description: 'product description'}]
     const onAddProduct = sinon.spy()
     const onDeleteProduct = sinon.spy()
 
@@ -17,10 +17,9 @@ describe('component view <ProductList />', () => {
                                               addProduct={ onAddProduct }
                                               deleteProduct={ onDeleteProduct } />);
 
-        // expect(wrapper.html()).to.equal('<div><h3>PRODUCTLIST_TITLE</h3><div class="products"><p class="product">1<span>-</span>desc<button class="deleteProduct">PRODUCTLIST_DELETE_PRODUCT_BUTTON</button></p><button class="addProduct">PRODUCTLIST_ADD_PRODUCT_BUTTON</button></div></div>')
-        // expect(wrapper.html()).to.contain('<h3>')
-
-        expect(wrapper.contains(<h3>{ messages.title }</h3>)).to.equal(true)
+        expect(wrapper.html().includes(messages.title)).to.equal(true)
+        expect(wrapper.html().includes(products[0].description)).to.equal(true)
+        expect(wrapper.html().includes(products[0].id)).to.equal(true)
 
         wrapper.find('button.addProduct').simulate('click')
         expect(onAddProduct.calledOnce).to.equal(true)

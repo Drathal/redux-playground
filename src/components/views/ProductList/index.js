@@ -6,7 +6,7 @@ import messages from './en'
 const ProductList = (props) => {
     return (
         <div>
-            <h3>{ props.messages.title }</h3>
+            <h3 className='productListTitle'>{ props.messages.title }</h3>
             <div className='products'>
                 { (props.products || []).map((product) => <p className='product'
                                                              key={ product.id }>
