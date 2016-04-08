@@ -1,4 +1,11 @@
-.button {
-    color: #fff;
-    background-color: #337ab7;
+.card {
+    margin-bottom:1em;
+}
+
+.addButton {
+    float:right;
+}
+
+.addProductButton {
+    margin-bottom:1em;
 }

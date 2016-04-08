@@ -2,5 +2,6 @@
     "title": "🌏 Products",
     "addProductButton": "🌏 Add Random Product",
     "deleteProductButton": "🌏 X",
-    "noProducts": "🌏 No Products Found"
+    "noProducts": "🌏 No Products Found",
+    "addToCartButton":"🌏 Add to Cart"
 }

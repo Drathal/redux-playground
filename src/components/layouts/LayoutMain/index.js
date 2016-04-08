@@ -11,10 +11,7 @@ const LayoutMain = (props) => {
         <div className="app">
             <AppBar title={ props.messages.title }
                     iconClassNameRight="muidocs-icon-navigation-expand-more" />
-            <Paper zDepth={ 2 }
-                   styleName='paperContainer'>
-                { props.children }
-            </Paper>
+            { props.children }
         </div>
 
     )

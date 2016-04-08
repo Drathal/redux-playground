@@ -1,29 +1,47 @@
 import React, { PropTypes } from 'react'
 import CSSModules from 'react-css-modules';
-import RaisedButton from 'material-ui/lib/raised-button';
+
 import styles from './style.css';
 import messages from './en.json'
+
+import Card from 'material-ui/lib/card/card';
+import CardActions from 'material-ui/lib/card/card-actions';
+import CardHeader from 'material-ui/lib/card/card-header';
+import CardMedia from 'material-ui/lib/card/card-media';
+import CardTitle from 'material-ui/lib/card/card-title';
+import FlatButton from 'material-ui/lib/flat-button';
+import CardText from 'material-ui/lib/card/card-text';
+import RaisedButton from 'material-ui/lib/raised-button';
 
 const ProductList = (props) => {
     return (
         <div>
             <h3>{ props.messages.title }</h3>
+            <RaisedButton className='addProduct'
+                          styleName='addProductButton'
+                          label={ props.messages.addProductButton }
+                          primary={ true }
+                          onTouchTap={ props.addProduct.bind(this) } />
             <div className='products'>
-                { (props.products || []).map((product) => <div className={ 'product' + ' product-' + product.id }
-                                                               key={ product.id }>
-                                                              { product.id }
-                                                              <span>-</span>
-                                                              { product.description }
-                                                              <RaisedButton className={ 'deleteProduct' + ' deleteProduct-' + product.id }
-                                                                            secondary={ true }
-                                                                            label={ props.messages.deleteProductButton }
-                                                                            onTouchTap={ props.deleteProduct.bind(this, product) } />
-                                                          </div>) }
+                { (props.products || []).map((product) => <Card className={ 'product' + ' product-' + product.id }
+                                                                styleName='card'
+                                                                key={ product.id }>
+                                                              <CardTitle title={ product.description }
+                                                                         subtitle={ product.id } />
+                                                              <CardMedia overlay={ <CardTitle subtitle="lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum " /> }>
+                                                                  <img src={ '//placehold.it/600x165' } />
+                                                              </CardMedia>
+                                                              <CardActions>
+                                                                  <RaisedButton label={ props.messages.deleteProductButton }
+                                                                                secondary={ true }
+                                                                                styleName='deleteButton'
+                                                                                onTouchTap={ props.deleteProduct.bind(this, product) } />
+                                                                  <RaisedButton label={ props.messages.addToCartButton }
+                                                                                styleName='addButton'
+                                                                                primary={ true } />
+                                                              </CardActions>
+                                                          </Card>) }
                 { props.products.length === 0 && <h3>{ props.messages.noProducts }</h3> }
-                <RaisedButton className='addProduct'
-                              label={ props.messages.addProductButton }
-                              primary={ true }
-                              onTouchTap={ props.addProduct.bind(this) } />
             </div>
         </div>
     )

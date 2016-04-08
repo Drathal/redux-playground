@@ -24,7 +24,7 @@ export default class ProductListContainer extends Component {
             response.data.map(product=>{
                 this.props.addProduct(product)
             })
-        });
+        })
     }
 
     render() {
