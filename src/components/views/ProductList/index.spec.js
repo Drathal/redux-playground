@@ -4,7 +4,7 @@ import { shallow, mount, render } from 'enzyme';
 import sinon from 'sinon';
 
 import ProductsList from '../ProductList'
-import messages from './en.js'
+import messages from './en.json'
 
 describe('component view <ProductList />', () => {
 

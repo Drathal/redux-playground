@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import CSSModules from 'react-css-modules';
 import styles from './style.css';
-import messages from './en'
+import messages from './en.json'
 
 const ProductList = (props) => {
     return (
