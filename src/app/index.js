@@ -9,11 +9,23 @@ import makeStore from './store'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
+import { deepOrange500 } from 'material-ui/lib/styles/colors';
+
+const muiTheme = getMuiTheme({
+    palette: {
+        accent1Color: deepOrange500,
+    },
+});
+
 let store = makeStore();
 
 render(
-    <Provider store={ store }>
-        { routes }
-    </Provider>,
+    <MuiThemeProvider muiTheme={ muiTheme }>
+        <Provider store={ store }>
+            { routes }
+        </Provider>
+    </MuiThemeProvider>,
     document.getElementById('root')
 )

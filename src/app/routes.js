@@ -8,7 +8,8 @@ import ProductListContainer from '../components/containers/ProductListContainer'
 export default (
 <Router history={ browserHistory }>
     <Route component={ LayoutMain }>
-        <Route path="/" component={ ProductListContainer } />
+        <Route path="/"
+               component={ ProductListContainer } />
     </Route>
 </Router>
 );

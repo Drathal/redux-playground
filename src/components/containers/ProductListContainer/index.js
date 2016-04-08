@@ -22,6 +22,6 @@ export default class ProductListContainer extends Component {
         return (<ProductsList title="My Products"
                               products={ this.props.products }
                               addProduct={ this._doAddProduct.bind(this) }
-                              deleteProduct={ this._doDeleteProduct.bind(this) }></ProductsList>)
+                              deleteProduct={ this._doDeleteProduct.bind(this) } />)
     }
 }

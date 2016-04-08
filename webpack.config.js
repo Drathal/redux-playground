@@ -4,7 +4,8 @@ var isProduction = !!process.argv.find(x => x == '-p')
 
 var entry = {
     app: [
-        './index', 'webpack-hot-middleware/client'
+        './index',
+        'webpack-hot-middleware/client?reload=true&noInfo=true'
     ],
     vendor: [
         'react',
@@ -13,7 +14,8 @@ var entry = {
         'redux-promise',
         'redux-thunk',
         'redux-logger',
-        'babel-polyfill'
+        'babel-polyfill',
+        'webpack-hot-middleware/client?reload=true&noInfo=true'
     ]
 }
 
