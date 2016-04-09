@@ -35,6 +35,7 @@ const ProductList = (props) => {
                                                                   <RaisedButton label={ props.messages.deleteProductButton }
                                                                                 secondary={ true }
                                                                                 styleName='deleteButton'
+                                                                                className={ 'deleteProduct' + ' deleteProduct-' + product.id }
                                                                                 onTouchTap={ props.deleteProduct.bind(this, product) } />
                                                                   <RaisedButton label={ props.messages.addToCartButton }
                                                                                 styleName='addButton'
