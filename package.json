@@ -9,6 +9,7 @@
     "test:watch": "better-npm-run mocha:test --watch",
     "build": "better-npm-run build:production",
     "start": "better-npm-run start:dev",
+    "//": "npm install updtr -g ",
     "update": "updtr"
   },
   "engines": {
@@ -43,7 +44,7 @@
     "axios": "^0.9.1",
     "express": "^4.13.4",
     "normalize.css": "^4.1.1",
-    "npm": "^3.8.7",
+    "npm": "^3.8.6",
     "react": "^15.0.1",
     "react-addons-css-transition-group": "^15.0.1",
     "react-dom": "^15.0.1",
@@ -93,7 +94,6 @@
     "sinon": "^1.17.3",
     "style-loader": "^0.13.1",
     "toolbox-loader": "0.0.3",
-    "updtr": "^0.1.10",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",
