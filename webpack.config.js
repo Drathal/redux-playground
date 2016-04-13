@@ -1,3 +1,5 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 var path = require('path')
 var webpack = require('webpack')
 var isProduction = !!process.argv.find(x => x == '-p')
@@ -13,7 +15,6 @@ var entry = {
         'redux',
         'redux-promise',
         'redux-thunk',
-        'redux-logger',
         'babel-polyfill',
         'webpack-hot-middleware/client?reload=true&noInfo=true'
     ]
@@ -31,6 +32,13 @@ var loaders = [
         loaders: ['json'],
         exclude: /node_modules/,
         include: __dirname
+    },
+    {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+            'url-loader?limit=10000',
+            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&verbose=false'
+        ]
     }
 ];
 
@@ -42,12 +50,10 @@ var plugins = [
 ]
 
 if (!isProduction) {
+    plugins.push(new ExtractTextPlugin('app.css', {allChunks: true}))
     loaders.push({
-        test: /\.css$/,
-        loaders: [
-            'style?sourceMap',
-            'css?modules&importLoaders=1&localIdentName=[path]_[name]_[local]_[hash:base64:5]'
-        ]
+        test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader?sourceMap!toolbox')
     });
 }
 
@@ -55,13 +61,22 @@ if (isProduction) {
     plugins.push(new webpack.optimize.UglifyJsPlugin({mangle: true, compress: {warnings: false}}))
     plugins.push(new ExtractTextPlugin('app.css', {allChunks: true}))
     loaders.push({
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]')
+        test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass?sourceMap!toolbox')
     })
 }
 
 module.exports = {
-    devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
+    toolbox: {theme: 'src/app/theme.scss'},
+    resolve: {
+        extensions: [
+            '',
+            '.js',
+            '.scss',
+            '.json'
+        ]
+    },
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
     entry,
     output: {
         path: path.join(__dirname, 'build'),

@@ -1,18 +1,23 @@
 import React, { PropTypes } from 'react'
 import messages from './en.json'
-import CSSModules from 'react-css-modules';
-import styles from './style.css';
-
-import AppBar from 'material-ui/lib/app-bar';
-import Paper from 'material-ui/lib/paper';
+import { Layout, AppBar, Panel } from 'react-toolbox';
+import style from './style'
 
 const LayoutMain = (props) => {
     return (
-        <div className="app">
-            <AppBar title={ props.messages.title }
-                    iconClassNameRight="muidocs-icon-navigation-expand-more" />
-            { props.children }
-        </div>
+        <Layout>
+            <Panel>
+                <AppBar fixed
+                        flat>
+                    <a href="/">
+                        { props.messages.title }
+                    </a>
+                </AppBar>
+                <div className={ style.mainPane }>
+                    { props.children }
+                </div>
+            </Panel>
+        </Layout>
 
     )
 }
@@ -20,4 +25,4 @@ const LayoutMain = (props) => {
 LayoutMain.defaultProps = {messages};
 LayoutMain.propTypes = {messages: PropTypes.object}
 
-export default CSSModules(LayoutMain, styles, {errorWhenNotFound: false})
+export default LayoutMain
