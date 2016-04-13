@@ -16,7 +16,7 @@
   },
   "betterScripts": {
     "mocha:test": {
-      "command": "mocha src/**/*.spec.js -R mocha-better-spec-reporter --reporter-options stack-exclude=**/node_modules/** --compilers js:babel-core/register --require ignore-styles ./test/test_helper.js --recursive",
+      "command": "mocha src/**/*.spec.js",
       "env": {
         "BABEL_ENV": "test"
       }
