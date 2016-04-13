@@ -13,7 +13,8 @@
     "update": "updtr"
   },
   "engines": {
-    "node": ">=5.10.0"
+    "node": ">=5.10.0",
+    "npm" : ">=3.8.3"
   },
   "betterScripts": {
     "mocha:test": {
@@ -44,7 +45,6 @@
     "axios": "^0.9.1",
     "express": "^4.13.4",
     "normalize.css": "^4.1.1",
-    "npm": "^3.8.6",
     "react": "^15.0.1",
     "react-addons-css-transition-group": "^15.0.1",
     "react-dom": "^15.0.1",
