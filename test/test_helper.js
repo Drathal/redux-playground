@@ -1,8 +1,14 @@
+var path = require('path')
 var jsdom = require('jsdom').jsdom;
 
-var exposedProperties = ['window', 'navigator', 'document'];
+var pe = require('pretty-error').start()
+pe.skipPackage('mocha', 'babel-register')
+pe.skipNodeFiles()
+pe.skipPath('internal/module.js');
 
-global.document = jsdom('');
+var exposedProperties = ['window', 'navigator', 'document']
+
+global.document = jsdom('')
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach((property) => {
     if (typeof global[property] === 'undefined') {
@@ -11,4 +17,4 @@ Object.keys(document.defaultView).forEach((property) => {
     }
 });
 
-global.navigator = {userAgent: 'node.js'};
+global.navigator = {userAgent: 'node.js'}

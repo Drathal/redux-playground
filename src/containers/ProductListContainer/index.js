@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getProducts } from '../../../api/product'
-import ProductsList from '../../views/ProductList'
-import { addProduct, deleteProduct } from '../../../redux/modules/products/actions'
+import { getProducts } from '../../api/product'
+import ProductsList from '../../components/ProductList'
+import { addProduct, deleteProduct } from '../../redux/modules/products/actions'
 
 @connect((state) => {
     return {products: state.products.itemList}
@@ -21,7 +21,7 @@ export default class ProductListContainer extends Component {
 
     componentDidMount = function() {
         getProducts().then(response => {
-            response.data.map(product=>{
+            response.data.map(product => {
                 this.props.addProduct(product)
             })
         })

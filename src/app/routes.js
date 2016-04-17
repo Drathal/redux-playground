@@ -1,15 +1,22 @@
 import React from 'react';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, match } from 'react-router';
+import { I18nextProvider, loadNamespaces } from 'react-i18next';
 
-import LayoutMain from '../components/layouts/LayoutMain'
+import LayoutMain from '../components/LayoutMain'
+import NotFound from '../components/NotFound'
 
-import ProductListContainer from '../components/containers/ProductListContainer'
+import App from '../containers/App'
+import ProductListContainer from '../containers/ProductListContainer'
 
 export default (
 <Router history={ browserHistory }>
-    <Route component={ LayoutMain }>
-        <Route path="/"
+    <Route path="/"
+           component={ LayoutMain }>
+        <IndexRoute component={ ProductListContainer } />
+        <Route path="products"
                component={ ProductListContainer } />
+        <Route path="*"
+               component={ NotFound } />
     </Route>
 </Router>
 );

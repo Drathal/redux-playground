@@ -6,7 +6,7 @@ var isProduction = !!process.argv.find(x => x == '-p')
 
 var entry = {
     app: [
-        './index',
+        './src/app/index',
         'webpack-hot-middleware/client?reload=true&noInfo=true'
     ],
     vendor: [

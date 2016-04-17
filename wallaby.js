@@ -11,6 +11,7 @@ module.exports = (wallaby) => {
             {pattern: 'node_modules/**/style.scss', load: false},
             {pattern: 'src/**/*.js'},
             {pattern: 'test/test_helper.js'},
+            {pattern: 'test/i18n.js'},
             {pattern: '!src/**/*.spec.js'}
         ],
         tests: [
