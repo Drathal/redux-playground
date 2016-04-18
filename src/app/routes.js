@@ -1,11 +1,9 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRoute, match } from 'react-router';
-import { I18nextProvider, loadNamespaces } from 'react-i18next';
 
 import LayoutMain from '../components/LayoutMain'
 import NotFound from '../components/NotFound'
 
-import App from '../containers/App'
 import ProductListContainer from '../containers/ProductListContainer'
 
 export default (

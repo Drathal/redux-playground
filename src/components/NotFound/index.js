@@ -1,12 +1,18 @@
 import React from 'react';
+import { translate, Interpolate } from 'react-i18next';
 
-export default function NotFound() {
+const NotFound = (props) => {
+
+    const {t} = props;
+
     return (
         <div className="container">
-            <h1>Doh! 404!</h1>
+            <h1>{ t('title') }</h1>
             <p>
-                These are <em>not</em> the droids you are looking for!
+                { t('message') }
             </p>
         </div>
-        );
+    )
 }
+
+export default translate(['NotFound', 'common'])(NotFound)

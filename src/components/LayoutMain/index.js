@@ -3,7 +3,6 @@ import { Layout, AppBar, Panel } from 'react-toolbox';
 import { translate } from 'react-i18next';
 
 import style from './style'
-import messages from './en.json'
 
 const LayoutMain = (props) => {
 
@@ -14,12 +13,12 @@ const LayoutMain = (props) => {
             <Panel>
                 <AppBar fixed
                         flat>
+                    { t('appName') }
                     <a href="/">
-                        { t('common.appName') }
-                        { props.messages.title }
+                        { t('title') }
                     </a>
                     <a href="/404">
-                        { props.messages.notFound }
+                        { t('notFound') }
                     </a>
                 </AppBar>
                 <div className={ style.mainPane }>
@@ -30,7 +29,4 @@ const LayoutMain = (props) => {
     )
 }
 
-LayoutMain.defaultProps = {messages};
-LayoutMain.propTypes = {messages: PropTypes.object}
-
-export default translate(['common', 'LayoutMain'])(LayoutMain);
+export default translate(['LayoutMain', 'common'])(LayoutMain);

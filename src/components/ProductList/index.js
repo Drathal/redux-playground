@@ -1,41 +1,43 @@
 import React, { PropTypes } from 'react'
 import { Button } from 'react-toolbox';
-import messages from './en.json'
+import { translate } from 'react-i18next';
 
 const ProductList = (props) => {
+
+    const {t} = props;
+
+    const products = product => <div className={ 'product' + ' product-' + product.id }
+                                     key={ product.id }>
+                                    <h1>{ product.description } { product.id }</h1>
+                                    <img src={ '//placehold.it/600x165' } />
+                                    <div>
+                                        <Button raised
+                                                label={ t('deleteProduct') }
+                                                className={ 'deleteProduct' + ' deleteProduct-' + product.id }
+                                                onTouchTap={ props.deleteProduct.bind(this, product) } />
+                                        <Button raised
+                                                label={ t('addToCart') }
+                                                className={ 'addToCart' + ' addToCart-' + product.id } />
+                                    </div>
+                                </div>
+
+    const noProducts = <h4>{ t('noProducts') }</h4>
+
     return (
         <div>
-            <h3>{ props.messages.title }</h3>
+            <h3>{ t('title') }</h3>
             <Button raised
                     primary
                     className={ 'addProduct' }
-                    label={ props.messages.addProductButton }
+                    label={ t('addProduct') }
                     onTouchTap={ props.addProduct.bind(this) } />
             <div className='products'>
-                { (props.products || []).map((product) => <div className={ 'product' + ' product-' + product.id }
-                                                               key={ product.id }>
-                                                              <h1 title={ product.description }
-                                                                  subtitle={ product.id } />
-                                                              <div overlay={ <p subtitle="lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum " /> }>
-                                                                  <img src={ '//placehold.it/600x165' } />
-                                                              </div>
-                                                              <div>
-                                                                  <Button raised
-                                                                          label={ props.messages.deleteProductButton }
-                                                                          className={ 'deleteProduct' + ' deleteProduct-' + product.id }
-                                                                          onTouchTap={ props.deleteProduct.bind(this, product) } />
-                                                                  <Button raised
-                                                                          label={ props.messages.addToCartButton }
-                                                                          className={ 'addToCart' + ' addToCart-' + product.id } />
-                                                              </div>
-                                                          </div>) }
-                { props.products.length === 0 && <h3>{ props.messages.noProducts }</h3> }
+                { props.products.length > 0 && (props.products).map(products) }
+                { props.products.length === 0 && noProducts }
             </div>
         </div>
     )
 }
-
-ProductList.defaultProps = {messages};
 
 ProductList.propTypes = {
     messages: PropTypes.object,
@@ -47,4 +49,4 @@ ProductList.propTypes = {
     deleteProduct: PropTypes.func.isRequired
 }
 
-export default ProductList
+export default translate(['common', 'ProductList'])(ProductList);

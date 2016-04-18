@@ -16,7 +16,7 @@ i18n.use(XHR)
             escapeValue: false
         },
         backend: {
-            loadPath: '{{lng}}-{{ns}}',
+            loadPath: '{{ns}}/i18n/{{lng}}',
             parse: (data) => data,
             ajax: loadLocales
         }
