@@ -12,11 +12,12 @@ const ProductList = (props) => {
                                     <img src={ '//placehold.it/600x165' } />
                                     <div>
                                         <Button raised
-                                                label={ t('deleteProduct') }
+                                                label={ t('deleteProductButton') }
                                                 className={ 'deleteProduct' + ' deleteProduct-' + product.id }
-                                                onTouchTap={ props.deleteProduct.bind(this, product) } />
+                                                onTouchTap={ props.deleteProduct.bind(this, product) }
+                                                onClick={ props.deleteProduct.bind(this, product) } />
                                         <Button raised
-                                                label={ t('addToCart') }
+                                                label={ t('addToCartButton') }
                                                 className={ 'addToCart' + ' addToCart-' + product.id } />
                                     </div>
                                 </div>
@@ -29,8 +30,9 @@ const ProductList = (props) => {
             <Button raised
                     primary
                     className={ 'addProduct' }
-                    label={ t('addProduct') }
-                    onTouchTap={ props.addProduct.bind(this) } />
+                    label={ t('addProductButton') }
+                    onTouchTap={ props.addProduct.bind(this) }
+                    onClick={ props.addProduct.bind(this) } />
             <div className='products'>
                 { props.products.length > 0 && (props.products).map(products) }
                 { props.products.length === 0 && noProducts }
@@ -49,4 +51,4 @@ ProductList.propTypes = {
     deleteProduct: PropTypes.func.isRequired
 }
 
-export default translate(['common', 'ProductList'])(ProductList);
+export default translate(['ProductList', 'common'])(ProductList);
