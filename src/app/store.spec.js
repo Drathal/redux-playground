@@ -8,7 +8,7 @@ describe('store', () => {
     const product2 = {'id': 2, 'description': 'product 2'}
     const product3 = {'id': 3, 'description': 'product 3'}
 
-    it('can dispatch cart and product actions', () => {
+    it('can dispatch actions', () => {
 
         const store = makeStore();
         const stateBefore = {products: []}
