@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Button } from 'react-toolbox';
 import { translate } from 'react-i18next';
+import productPicture from './product.jpg'
 
 const ProductList = (props) => {
 
@@ -9,7 +10,7 @@ const ProductList = (props) => {
     const products = product => <div className={ 'product' + ' product-' + product.id }
                                      key={ product.id }>
                                     <h1>{ product.description } { product.id }</h1>
-                                    <img src={ '//placehold.it/600x165' } />
+                                    <img src={ productPicture } />
                                     <div>
                                         <Button raised
                                                 label={ t('deleteProductButton') }

@@ -1,3 +1,6 @@
+import register from 'ignore-styles'
+register(['.sass', '.scss', '.css', '.png', '.jpg', '.gif', '.svg'])
+
 var path = require('path')
 var jsdom = require('jsdom').jsdom;
 
