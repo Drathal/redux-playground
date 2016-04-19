@@ -1,59 +1,31 @@
-import { combineReducers } from 'redux'
 import { ADD_PRODUCT, DELETE_PRODUCT } from './actions';
 
-const initialState = {
-    items: {},
-    itemList: [],
-    quantity: 0
-}
-
-function items(state = initialState.items, action = {}) {
-    switch (action.type) {
-        case ADD_PRODUCT:
-            const {id} = action.product;
-            return {
-                ...state,
-                [id]: action.product
-            };
-        case DELETE_PRODUCT:
-            if (!state.hasOwnProperty(action.productId)) {
-                return state;
-            }
-
-            const newState = {...state}
-            delete newState[action.productId]
-            return newState
-        default:
-            return state;
-    }
-}
-
-function getQuantity(items) {
-    return Object.keys(items).length
-}
-
-function getItemList(items) {
-    let list = []
-    Object.keys(items).map((productId) => {
-        list = [...list, items[productId]]
-    })
-    return list
-}
+const initialState = []
 
 /**
- * main cart reducer
+ * main product reducer
  */
-export default function products(state = initialState, action) {
+export default (state = initialState, action) => {
+
+    const inList = (product) => state.filter((i => i.id === product.id)).length > 0
+    const getPosition = (id) => state.findIndex((i => i.id === id))
 
     switch (action.type) {
         case ADD_PRODUCT:
+            if (!action.product || !action.product.id) return state
+            if (inList(action.product)) return state
+            return [
+                ...state,
+                action.product
+            ]
         case DELETE_PRODUCT:
-            return {
-                items: items(state.items, action),
-                itemList: getItemList(items(state.items, action)),
-                quantity: getQuantity(items(state.items, action))
-            };
+            let index = getPosition(action.id)
+            if (index === -1) return state
+            return [
+                ...state.slice(0, index),
+                ...state.slice(index + 1)
+            ];
         default:
-            return state;
+            return state
     }
 }

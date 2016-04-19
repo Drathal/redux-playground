@@ -1,5 +1,5 @@
-export const ADD_PRODUCT = 'ADD_PRODUCT';
-export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const ADD_PRODUCT = 'product/ADD_PRODUCT';
+export const DELETE_PRODUCT = 'product/DELETE_PRODUCT';
 
 /**
  * adds a product to the product list
@@ -15,6 +15,6 @@ export function addProduct(product) {
  * @param  {number} productId
  * @return {action}
  */
-export function deleteProduct(productId) {
-    return {type: DELETE_PRODUCT, productId}
+export function deleteProduct(id) {
+    return {type: DELETE_PRODUCT, id}
 }

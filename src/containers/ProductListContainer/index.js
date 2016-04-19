@@ -6,7 +6,7 @@ import ProductsList from '../../components/ProductList'
 import { addProduct, deleteProduct } from '../../redux/modules/products/actions'
 
 @connect((state) => {
-    return {products: state.products.itemList}
+    return {products: state.products}
 }, {addProduct, deleteProduct})
 export default class ProductListContainer extends Component {
 

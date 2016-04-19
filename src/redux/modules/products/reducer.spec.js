@@ -13,11 +13,11 @@ describe('reducer products', () => {
 
     it('can add products', () => {
 
-        const stateBefore = {items: {}, itemList: [], quantity: 0}
+        const stateBefore = []
         const action1 = addProduct(product1)
         const action2 = addProduct(product2)
-        const stateAfter1 = {items: {1: product1}, itemList: [product1], quantity: 1}
-        const stateAfter2 = {items: {1: product1, 2: product2}, itemList: [product1, product2], quantity: 2}
+        const stateAfter1 = [{...product1}]
+        const stateAfter2 = [{...product1}, {...product2}]
 
         deepFreeze(stateBefore)
         deepFreeze(action1)
@@ -30,13 +30,13 @@ describe('reducer products', () => {
 
     it('can not add an existing product', () => {
 
-        const stateBefore = {items: {}, itemList: [], quantity: 0}
+        const stateBefore = []
         const action1 = addProduct(product1)
         const action2 = addProduct(product2)
         const action3 = addProduct(product2)
-        const stateAfter1 = {items: {1: product1}, itemList: [product1], quantity: 1}
-        const stateAfter2 = {items: {1: product1, 2: product2}, itemList: [product1, product2], quantity: 2}
-        const stateAfter3 = {items: {1: product1, 2: product2}, itemList: [product1, product2], quantity: 2}
+        const stateAfter1 = [{...product1}]
+        const stateAfter2 = [{...product1}, {...product2}]
+        const stateAfter3 = [{...product1}, {...product2}]
 
         deepFreeze(stateBefore)
         deepFreeze(action1)
@@ -51,9 +51,9 @@ describe('reducer products', () => {
 
     it('can delete a product', () => {
 
-        const stateBefore = {items: {1: product1}, itemList: [product1], quantity: 1}
+        const stateBefore = [{...product1}]
         const action = deleteProduct(1)
-        const stateAfter = {items: {}, itemList: [], quantity: 0}
+        const stateAfter = []
 
         deepFreeze(stateBefore)
         deepFreeze(action)
@@ -64,9 +64,9 @@ describe('reducer products', () => {
 
     it('can delete a product from many', () => {
 
-        const stateBefore = {items: {1: product1, 2: product2, 3: product3}, itemList: [product1, product2, product3], quantity: 3}
+        const stateBefore = [{...product1}, {...product2}, {...product3}]
         const action = deleteProduct(3)
-        const stateAfter = {items: {1: product1, 2: product2}, itemList: [product1, product2], quantity: 2}
+        const stateAfter = [{...product1}, {...product2}]
 
         deepFreeze(stateBefore)
         deepFreeze(action)

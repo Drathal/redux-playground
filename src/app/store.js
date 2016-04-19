@@ -4,7 +4,6 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import DevTools from '../containers/DevTools';
 
 import products from '../redux/modules/products'
-import cart from '../redux/modules/cart'
 
 const enhancer = compose(
     applyMiddleware(promiseMiddleware, thunkMiddleware),

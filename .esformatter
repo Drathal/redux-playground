@@ -5,8 +5,7 @@
         "esformatter-jsx",
         "esformatter-literal-notation",
         "esformatter-dot-notation",
-        "esformatter-spaced-lined-comment",
-        "esformatter-braces"
+        "esformatter-spaced-lined-comment"
     ],
     "preset": "default",
     "jsx": {
