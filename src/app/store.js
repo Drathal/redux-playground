@@ -1,16 +1,23 @@
 import thunkMiddleware from 'redux-thunk'
 import promiseMiddleware from 'redux-promise'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import DevTools from '../containers/DevTools';
 
 import products from '../redux/modules/products'
 import cart from '../redux/modules/cart'
 
-export default function makeStore() {
+const enhancer = compose(
+    applyMiddleware(promiseMiddleware, thunkMiddleware),
+    DevTools.instrument()
+);
 
-    var middleware = [promiseMiddleware, thunkMiddleware]
+const rootReducer = combineReducers({products})
+
+export default function makeStore(initialState) {
 
     return createStore(
-        combineReducers({products, cart}),
-        applyMiddleware(...middleware)
+        rootReducer,
+        initialState,
+        enhancer
     )
 }
