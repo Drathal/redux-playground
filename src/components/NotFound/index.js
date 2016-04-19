@@ -1,6 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom'
-import { translate, Interpolate } from 'react-i18next';
+import { translate } from 'react-i18next';
 
 const NotFound = (props) => {
 

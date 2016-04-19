@@ -18,9 +18,6 @@ const LayoutMain = (props) => {
                     <Link to="/">
                     { t('title') }
                     </Link>
-                    <Link to="/404">
-                    { t('notFound') }
-                    </Link>
                 </AppBar>
                 <div className={ style.mainPane }>
                     { props.children }
