@@ -1,4 +1,5 @@
 import React from 'react';
+import { render } from 'react-dom'
 import { translate, Interpolate } from 'react-i18next';
 
 const NotFound = (props) => {
@@ -8,9 +9,7 @@ const NotFound = (props) => {
     return (
         <div className="container">
             <h1>{ t('title') }</h1>
-            <p>
-                { t('message') }
-            </p>
+            <p dangerouslySetInnerHTML={ {__html: t('message')} } />
         </div>
     )
 }

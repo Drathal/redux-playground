@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Layout, AppBar, Panel } from 'react-toolbox';
 import { translate } from 'react-i18next';
+import { Link } from 'react-router'
 
 import style from './style'
 
@@ -14,12 +15,12 @@ const LayoutMain = (props) => {
                 <AppBar fixed
                         flat>
                     { t('appName') }
-                    <a href="/">
-                        { t('title') }
-                    </a>
-                    <a href="/404">
-                        { t('notFound') }
-                    </a>
+                    <Link to="/">
+                    { t('title') }
+                    </Link>
+                    <Link to="/404">
+                    { t('notFound') }
+                    </Link>
                 </AppBar>
                 <div className={ style.mainPane }>
                     { props.children }

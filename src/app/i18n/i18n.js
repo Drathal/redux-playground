@@ -11,7 +11,7 @@ i18n.use(XHR)
         load: 'en',
         fallbackLng: 'en',
         defaultNS: 'common',
-        debug: true,
+        debug: false,
         interpolation: {
             escapeValue: false
         },
