@@ -1,20 +1,17 @@
 @import "~react-toolbox/lib/commons";
 
 .productTitle {
-    overflow:hidden;
-    text-overflow: ellipsis;
-    max-height:2em;
-    line-height:1em;
+
 }
 
 .productCard {
     float:left;
-    margin-right:1em;
-    margin-bottom:1em;
-    width:25%;
+    margin-right:$unit;
+    margin-bottom:$unit;
+    width:20%;
     min-width:200px;
 }
 
 .products {
-    margin:1em;
+    margin-top: $unit
 }

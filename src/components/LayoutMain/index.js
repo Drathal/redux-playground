@@ -12,16 +12,21 @@ const LayoutMain = (props) => {
     return (
         <Layout>
             <Panel>
-                <AppBar fixed
-                        flat>
+                <AppBar fixed flat>
                     { t('appName') }
-                    <Link to="/">
-                    { t('title') }
-                    </Link>
+                    <nav className={ style.navigation }>
+                        <ul>
+                            <li>
+                                <Link to="/" activeClassName='active'>
+                                { t('productLink') }
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
                 </AppBar>
-                <div className={ style.mainPane }>
+                <Panel className={ style.mainPane }>
                     { props.children }
-                </div>
+                </Panel>
             </Panel>
         </Layout>
     )

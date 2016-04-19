@@ -11,17 +11,17 @@
     "jsx": {
         "formatJSX": true,
         "attrsOnSameLineAsTag": false,
-        "maxAttrsOnTag": 1,
+        "maxAttrsOnTag": 3,
         "firstAttributeOnSameLine": true,
         "spaceInJSXExpressionContainers": " ",
-        "alignWithFirstAttribute": true,
+        "alignWithFirstAttribute": false,
         "htmlOptions": {
             "brace_style": "collapse",
             "indent_char": " ",
             "indent_size": 4,
             "max_preserve_newlines": 2,
             "preserve_newlines": true,
-            "wrap_line_length": 250,
+            "wrap_line_length": 120,
             "eval_code": true
         }
     },

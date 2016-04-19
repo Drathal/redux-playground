@@ -8,20 +8,19 @@ const ProductList = (props) => {
 
     const {t} = props;
 
-    const products = product => <Card className={ 'product-' + product.id + ' ' + style.productCard }
-                                      key={ product.id }>
-                                    <CardTitle className={ style.productTitle }
-                                               title={ product.description } />
-                                    <CardMedia aspectRatio="wide"
-                                               image={ productPicture || '' } />
+    const products = product => <Card className={ 'product-' + product.id + ' ' + style.productCard } key={ product.id }>
+                                    <CardTitle className={ style.productTitle } title={ product.description } />
+                                    <CardMedia aspectRatio="wide" image={ productPicture || '' } />
                                     <CardActions>
                                         <Button raised
-                                                label={ t('deleteProductButton') }
-                                                className={ 'deleteProduct' + ' deleteProduct-' + product.id }
-                                                onClick={ props.deleteProduct.bind(this, product) } />
+                                            accent
+                                            label={ t('deleteProductButton') }
+                                            className={ 'deleteProduct' + ' deleteProduct-' + product.id }
+                                            onClick={ props.deleteProduct.bind(this, product) } />
                                         <Button raised
-                                                label={ t('addToCartButton') }
-                                                className={ 'addToCart' + ' addToCart-' + product.id } />
+                                            accent
+                                            label={ t('addToCartButton') }
+                                            className={ 'addToCart' + ' addToCart-' + product.id } />
                                     </CardActions>
                                 </Card>
 
@@ -31,10 +30,10 @@ const ProductList = (props) => {
         <div>
             <h3>{ t('title') }</h3>
             <Button raised
-                    primary
-                    className={ 'addProduct' }
-                    label={ t('addProductButton') }
-                    onClick={ props.addProduct.bind(this) } />
+                primary
+                className={ 'addProduct' }
+                label={ t('addProductButton') }
+                onClick={ props.addProduct.bind(this) } />
             <div className={ style.products }>
                 { props.products.length > 0 && (props.products).map(products) }
                 { props.products.length === 0 && noProducts }
