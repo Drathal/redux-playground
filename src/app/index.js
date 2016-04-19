@@ -8,9 +8,6 @@ import i18n from './i18n/i18n'
 import routes from './routes'
 import makeStore from './store'
 
-import injectTapEventPlugin from 'react-tap-event-plugin'
-injectTapEventPlugin();
-
 let store = makeStore();
 
 render(

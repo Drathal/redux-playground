@@ -14,7 +14,6 @@ const ProductList = (props) => {
                                         <Button raised
                                                 label={ t('deleteProductButton') }
                                                 className={ 'deleteProduct' + ' deleteProduct-' + product.id }
-                                                onTouchTap={ props.deleteProduct.bind(this, product) }
                                                 onClick={ props.deleteProduct.bind(this, product) } />
                                         <Button raised
                                                 label={ t('addToCartButton') }
@@ -31,7 +30,6 @@ const ProductList = (props) => {
                     primary
                     className={ 'addProduct' }
                     label={ t('addProductButton') }
-                    onTouchTap={ props.addProduct.bind(this) }
                     onClick={ props.addProduct.bind(this) } />
             <div className='products'>
                 { props.products.length > 0 && (props.products).map(products) }
