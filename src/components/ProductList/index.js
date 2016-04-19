@@ -1,17 +1,20 @@
 import React, { PropTypes } from 'react'
-import { Button } from 'react-toolbox';
+import { Button, Card, CardTitle, CardMedia, CardText, CardActions } from 'react-toolbox';
 import { translate } from 'react-i18next';
 import productPicture from './product.jpg'
+import style from './style'
 
 const ProductList = (props) => {
 
     const {t} = props;
 
-    const products = product => <div className={ 'product' + ' product-' + product.id }
-                                     key={ product.id }>
-                                    <h1>{ product.description } { product.id }</h1>
-                                    <img src={ productPicture } />
-                                    <div>
+    const products = product => <Card className={ 'product-' + product.id + ' ' + style.productCard }
+                                      key={ product.id }>
+                                    <CardTitle className={ style.productTitle }
+                                               title={ product.description } />
+                                    <CardMedia aspectRatio="wide"
+                                               image={ productPicture || '' } />
+                                    <CardActions>
                                         <Button raised
                                                 label={ t('deleteProductButton') }
                                                 className={ 'deleteProduct' + ' deleteProduct-' + product.id }
@@ -19,8 +22,8 @@ const ProductList = (props) => {
                                         <Button raised
                                                 label={ t('addToCartButton') }
                                                 className={ 'addToCart' + ' addToCart-' + product.id } />
-                                    </div>
-                                </div>
+                                    </CardActions>
+                                </Card>
 
     const noProducts = <h4>{ t('noProducts') }</h4>
 
@@ -32,7 +35,7 @@ const ProductList = (props) => {
                     className={ 'addProduct' }
                     label={ t('addProductButton') }
                     onClick={ props.addProduct.bind(this) } />
-            <div className='products'>
+            <div className={ style.products }>
                 { props.products.length > 0 && (props.products).map(products) }
                 { props.products.length === 0 && noProducts }
             </div>
