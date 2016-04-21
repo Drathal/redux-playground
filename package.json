@@ -1,22 +1,24 @@
 {
   "name": "redux-playground",
-  "version": "0.0.55",
+  "version": "0.0.6",
   "description": "redux-playground",
   "scripts": {
-    "format": "esformatter",
-    "babel-node": "babel-node",
-    "test": "better-npm-run mocha:test",
-    "test:watch": "better-npm-run mocha:test --watch",
+    "test": "better-npm-run coverage",
+    "test:watch": "better-npm-run mocha:test --reporter min --no-exit --watch --watch-extensions js,json",
     "build": "better-npm-run build:production",
-    "start": "better-npm-run start:dev",
-    "//": "npm install updtr -g ",
-    "update": "updtr"
+    "start": "better-npm-run start:dev"
   },
   "engines": {
     "node": ">=5.10.0",
     "npm": ">=3.8.3"
   },
   "betterScripts": {
+    "coverage": {
+      "command": "babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- src/**/*.spec.js",
+      "env": {
+        "BABEL_ENV": "test"
+      }
+    },
     "mocha:test": {
       "command": "mocha src/**/*.spec.js",
       "env": {
@@ -47,6 +49,7 @@
     "i18next": "^2.5.1",
     "i18next-browser-languagedetector": "^0.2.2",
     "i18next-xhr-backend": "^0.5.3",
+    "js-beautify": "^1.6.2",
     "normalize.css": "^4.1.1",
     "react": "^15.0.1",
     "react-addons-css-transition-group": "^15.0.1",
@@ -86,11 +89,11 @@
     "file-loader": "^0.8.5",
     "ignore-styles": "^1.2.0",
     "image-webpack-loader": "^1.7.0",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.3",
     "jsdom": "^8.4.0",
     "json-loader": "^0.5.4",
     "mocha": "^2.4.5",
-    "mocha-better-spec-reporter": "^3.0.2",
-    "mocha-clean": "^1.0.0",
     "node-sass": "^3.4.2",
     "pretty-error": "^2.0.0",
     "react-addons-test-utils": "^15.0.1",

@@ -7,10 +7,9 @@ import style from './style'
 const ProductList = (props) => {
 
     const {t} = props;
-
     const products = product => <Card className={ 'product-' + product.id + ' ' + style.productCard } key={ product.id }>
                                     <CardTitle className={ style.productTitle } title={ product.description } />
-                                    <CardMedia aspectRatio="wide" image={ productPicture || '' } />
+                                    <CardMedia aspectRatio="wide" image={ (productPicture.length > 0 && productPicture) || '' } />
                                     <CardActions>
                                         <Button raised
                                             accent

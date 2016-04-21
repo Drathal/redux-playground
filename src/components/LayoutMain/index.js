@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { Layout, AppBar, Panel } from 'react-toolbox';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router'
-
 import style from './style'
 
 const LayoutMain = (props) => {
@@ -13,7 +12,7 @@ const LayoutMain = (props) => {
         <Layout>
             <Panel>
                 <AppBar fixed flat>
-                    { t('appName') }
+                    { t('title') }
                     <nav className={ style.navigation }>
                         <ul>
                             <li>
