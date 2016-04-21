@@ -1,4 +1,5 @@
 {
     "title": "🌏 Sample App",
-    "productLink" : "🌏 Shop"
+    "productLink" : "🌏 Shop",
+    "notFoundLink" : "🌏 404"
 }

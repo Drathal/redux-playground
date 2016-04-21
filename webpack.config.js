@@ -42,7 +42,7 @@ var loaders = [
     },
     {
         test: /\.(scss|css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader?sourceMap!toolbox')
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!sass-loader?sourceMap')
     }
 ];
 
@@ -64,12 +64,10 @@ if (!isProduction) {
 
 if (isProduction) {
     plugins.push(new webpack.optimize.UglifyJsPlugin({mangle: true, compress: {warnings: false}}))
-    plugins.push(new ExtractTextPlugin('app.css', {allChunks: true}))
 }
 
 module.exports = {
     debug: false,
-    toolbox: {theme: 'src/app/theme.scss'},
     resolve: {
         extensions: [
             '',

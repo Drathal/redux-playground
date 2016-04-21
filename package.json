@@ -1,13 +1,14 @@
 {
   "name": "redux-playground",
-  "version": "0.0.8",
+  "version": "0.0.86",
   "description": "redux-playground",
   "scripts": {
     "test": "better-npm-run coverage",
     "test:watch": "better-npm-run mocha:test --reporter min --no-exit --watch --watch-extensions js,json",
     "build": "better-npm-run build:production",
     "start": "better-npm-run start",
-    "start:dev": "better-npm-run start:dev"
+    "start:dev": "better-npm-run start:dev",
+    "dev": "better-npm-run start:dev"
   },
   "engines": {
     "node": ">=5.10.0",
@@ -61,12 +62,11 @@
     "normalize.css": "^4.1.1",
     "react": "^15.0.1",
     "react-addons-css-transition-group": "^15.0.1",
+    "react-bootstrap": "^0.29.0",
     "react-dom": "^15.0.1",
     "react-i18next": "^1.3.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.3.0",
-    "react-tap-event-plugin": "^1.0.0",
-    "react-toolbox": "^0.16.2",
     "redux": "^3.3.1",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.0.1"
@@ -113,7 +113,6 @@
     "sass-loader": "^3.2.0",
     "sinon": "^1.17.3",
     "style-loader": "^0.13.1",
-    "toolbox-loader": "0.0.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",

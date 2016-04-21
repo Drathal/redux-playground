@@ -1,38 +1,33 @@
 import React, { PropTypes } from 'react'
-import { Button, Card, CardTitle, CardMedia, CardText, CardActions } from 'react-toolbox';
 import { translate } from 'react-i18next';
+import { Button, Panel } from 'react-bootstrap'
 import productPicture from './product.jpg'
 import style from './style'
 
 const ProductList = (props) => {
 
     const {t} = props;
-    const products = product => <Card className={ 'product-' + product.id + ' ' + style.productCard } key={ product.id }>
-                                    <CardTitle className={ style.productTitle } title={ product.description } />
-                                    <CardMedia aspectRatio="wide" image={ (productPicture.length > 0 && productPicture) || '' } />
-                                    <CardActions>
-                                        <Button raised
-                                            accent
-                                            label={ t('deleteProductButton') }
-                                            className={ 'deleteProduct' + ' deleteProduct-' + product.id }
-                                            onClick={ props.deleteProduct.bind(this, product) } />
-                                        <Button raised
-                                            accent
-                                            label={ t('addToCartButton') }
-                                            className={ 'addToCart' + ' addToCart-' + product.id } />
-                                    </CardActions>
-                                </Card>
+    const products = product => <Panel header={ product.description }
+                                    bsStyle="primary"
+                                    className={ 'product-' + product.id + ' ' + style.productCard }
+                                    key={ product.id }>
+                                    <img src={ (productPicture.length > 0 && productPicture) || '' } />
+                                    <Button className={ 'deleteProduct' + ' deleteProduct-' + product.id } onClick={ props.deleteProduct.bind(this, product) }>
+                                        { t('deleteProductButton') }
+                                    </Button>
+                                    <Button className={ 'addToCart' + ' addToCart-' + product.id }>
+                                        { t('addToCartButton') }
+                                    </Button>
+                                </Panel>
 
     const noProducts = <h4>{ t('noProducts') }</h4>
 
     return (
         <div>
             <h3>{ t('title') }</h3>
-            <Button raised
-                primary
-                className={ 'addProduct' }
-                label={ t('addProductButton') }
-                onClick={ props.addProduct.bind(this) } />
+            <Button className={ style.addProductButton } onClick={ props.addProduct.bind(this) }>
+                { t('addProductButton') }
+            </Button>
             <div className={ style.products }>
                 { props.products.length > 0 && (props.products).map(products) }
                 { props.products.length === 0 && noProducts }
