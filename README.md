@@ -2,13 +2,14 @@
 
     Just a little playground for react and redux
 
-## build
+## production
 
     npm run build
+    npm run start
 
-## start app
+## development
 
-    npm start
+    npm run start:dev
 
 ## tests
 
