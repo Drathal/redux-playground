@@ -6,7 +6,8 @@
     "test": "better-npm-run coverage",
     "test:watch": "better-npm-run mocha:test --reporter min --no-exit --watch --watch-extensions js,json",
     "build": "better-npm-run build:production",
-    "start": "better-npm-run start:dev"
+    "start": "better-npm-run start",
+    "start:dev": "better-npm-run start:dev"
   },
   "engines": {
     "node": ">=5.10.0",
@@ -25,16 +26,23 @@
         "BABEL_ENV": "test"
       }
     },
-    "start:dev": {
-      "command": "node server/server.js",
+    "start": {
+      "command": "node build/index.js",
       "env": {
-        "BABEL_ENV": "development"
+        "NODE_ENV": "production"
+      }
+    },
+    "start:dev": {
+      "command": "node server/server.dev.js",
+      "env": {
+        "NODE_ENV": "development"
       }
     },
     "build:production": {
-      "command": "webpack --config webpack.config.js -p",
+      "command": "webpack --config webpack.config.js -p && cp ./src/app/index.html ./build && cp ./server/server.prod.js ./build/index.js",
       "env": {
-        "BABEL_ENV": "production"
+        "BABEL_ENV": "production",
+        "NODE_ENV": "production"
       }
     }
   },
@@ -68,6 +76,8 @@
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-constant-elements": "^6.5.0",
+    "babel-plugin-transform-react-inline-elements": "^6.6.5",
     "babel-polyfill": "^6.5.0",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",

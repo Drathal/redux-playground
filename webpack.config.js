@@ -2,12 +2,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var path = require('path')
 var webpack = require('webpack')
-var isProduction = !!process.argv.find(x => x == '-p')
+var isProduction = process.env.NODE_ENV === 'production'
+
+console.log('Bundling Application for:', process.env.NODE_ENV)
 
 var entry = {
     app: [
-        './src/app/index',
-        'webpack-hot-middleware/client?reload=true&noInfo=true'
+        './src/app/index'
     ],
     vendor: [
         'react',
@@ -15,8 +16,7 @@ var entry = {
         'redux',
         'redux-promise',
         'redux-thunk',
-        'babel-polyfill',
-        'webpack-hot-middleware/client?reload=true&noInfo=true'
+        'babel-polyfill'
     ]
 }
 
@@ -39,34 +39,36 @@ var loaders = [
             'url-loader?limit=10000',
             'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&verbose=false'
         ]
+    },
+    {
+        test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader?sourceMap!toolbox')
     }
 ];
 
 var plugins = [
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: Infinity, filename: 'vendor.js'})
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: Infinity, filename: 'vendor.js'}),
+    new ExtractTextPlugin('app.css', {allChunks: true})
 ]
 
 if (!isProduction) {
-    plugins.push(new ExtractTextPlugin('app.css', {allChunks: true}))
-    loaders.push({
-        test: /\.(scss|css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader?sourceMap!toolbox')
-    });
+    plugins.push(new webpack.HotModuleReplacementPlugin())
+    entry.app.push('webpack-hot-middleware/client?reload=true&noInfo=true')
+    entry.vendor.push('webpack-hot-middleware/client?reload=true&noInfo=true')
 }
 
 if (isProduction) {
     plugins.push(new webpack.optimize.UglifyJsPlugin({mangle: true, compress: {warnings: false}}))
     plugins.push(new ExtractTextPlugin('app.css', {allChunks: true}))
-    loaders.push({
-        test: /\.(scss|css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass?sourceMap!toolbox')
-    })
 }
 
 module.exports = {
+    debug: false,
     toolbox: {theme: 'src/app/theme.scss'},
     resolve: {
         extensions: [

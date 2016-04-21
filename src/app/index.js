@@ -16,7 +16,7 @@ render(
         <Provider store={ store }>
             <div>
                 { routes }
-                <DevTools />
+                { process.env.NODE_ENV !== 'production' && <DevTools /> }
             </div>
         </Provider>
     </I18nextProvider>,

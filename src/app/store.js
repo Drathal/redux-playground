@@ -5,10 +5,18 @@ import DevTools from '../containers/DevTools';
 
 import products from '../redux/modules/products'
 
-const enhancer = compose(
-    applyMiddleware(promiseMiddleware, thunkMiddleware),
-    DevTools.instrument()
-);
+var enhancer
+
+if (process.env.NODE_ENV !== 'production') {
+    enhancer = compose(
+        applyMiddleware(promiseMiddleware, thunkMiddleware),
+        DevTools.instrument()
+    );
+} else {
+    enhancer = compose(
+        applyMiddleware(promiseMiddleware, thunkMiddleware)
+    );
+}
 
 const rootReducer = combineReducers({products})
 
