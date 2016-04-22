@@ -42,9 +42,13 @@ var loaders = [
     },
     {
         test: /\.(scss|css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!sass-loader?sourceMap')
+        loader: isProduction ?
+            ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!sass-loader?sourceMap') :
+            'style!css?sourceMap&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!sass'
     }
 ];
+
+// BUILD ? ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss!sass') : 'style!css-loader?sourceMap!postcss!sass'
 
 var plugins = [
     new webpack.DefinePlugin({

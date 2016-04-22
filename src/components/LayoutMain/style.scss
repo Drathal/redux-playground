@@ -1,22 +1,13 @@
-/*
-
-*/
-
-html {
-  background-color: #f0f3f4;
-}
-
-body {
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.42857143;
-  color: #58666e;
-  background-color: transparent;
-}
+@import '../../theme/default-theme.scss';
 
 .container {
+    color: $default-text-color;
+    background-color: $default-bg-color;
+}
 
+.containerBody {
+    color: $default-text-color;
+    background-color: $default-bg-color;
 }
 
 .navigation {

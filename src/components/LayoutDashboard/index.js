@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import DevTools from '../../containers/DevTools';
 import style from './style'
 
-const LayoutMain = (props) => {
+const LayoutDashboard = (props) => {
 
     const {t} = props;
 
@@ -27,7 +27,7 @@ const LayoutMain = (props) => {
                                       </li>)
 
     return (
-        <div className={ 'app layout layout-main' }>
+        <div className={ 'app layout layout-dashboard' }>
             <Navbar fixed
                 fluid
                 staticTop
@@ -47,6 +47,35 @@ const LayoutMain = (props) => {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
+            <aside className={ style.sidemenu + ' app-aside' }>
+                <div className={ style.sidemenuBody }>
+                    <nav class="navi">
+                        <ul class="nav">
+                            <li>
+                                <span>Navigation</span>
+                            </li>
+                            <li class="line"></li>
+                            <li>
+                                <a href="">menu 1</a>
+                                <ul class="nav nav-sub">
+                                    <li>
+                                        <a href="">menu 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="">menu 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="">menu 4</a>
+                                    </li>
+                                    <li>
+                                        <a href="">menu 5</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
             <div className={ style.container + ' app-content' }>
                 <div className={ style.containerBody + ' app-content-body' }>
                     { props.children }
@@ -58,4 +87,4 @@ const LayoutMain = (props) => {
 }
 
 
-export default translate(['LayoutMain', 'common'])(LayoutMain);
+export default translate(['LayoutDashboard', 'common'])(LayoutDashboard);
