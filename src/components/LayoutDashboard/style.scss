@@ -1,7 +1,6 @@
 @import '../../theme/default-theme.scss';
 
 :global {
-
     body,
     html {
         background-color: $default-bg-color;
@@ -9,15 +8,15 @@
         width: 100%;
         height: 100%;
     }
-
     @media (min-width: 768px) {
         .layout.layout-dashboard {
             .app-content {
                 margin-left: 200px;
             }
+
+            .app-aside,
             .navbar-brand,
-            .navbar-header,
-            .app-aside {
+            .navbar-header {
                 width: 200px;
             }
         }
@@ -42,23 +41,24 @@
 }
 
 .sidemenuBody {
-    padding-top:70px;
+    padding-top: 70px;
 }
 
 .container {
     color: $default-text-color;
     background-color: $default-bg-color;
     height: 100%;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .containerBody {
     float: left;
     width: 100%;
     padding-bottom: 50px;
-    overflow:hidden;
+    overflow: hidden;
 
-    &::before, &:after {
+    &::before,
+    &:after {
         display: table;
         content: " ";
     }
