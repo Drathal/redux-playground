@@ -48,7 +48,7 @@ var loaders = [
     }
 ];
 
-// BUILD ? ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss!sass') : 'style!css-loader?sourceMap!postcss!sass'
+var preLoaders = []
 
 var plugins = [
     new webpack.DefinePlugin({
@@ -93,6 +93,7 @@ module.exports = {
         'react/lib/ExecutionEnvironment': true
     },
     module: {
+        preLoaders,
         loaders
     }
 }

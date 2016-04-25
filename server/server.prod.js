@@ -4,7 +4,7 @@ var path = require('path')
 var fs = require('fs')
 var express = require('express');
 var app = new express()
-var port = 80
+var port = 8080
 
 app.get('/api/product', function(req, res) {
     res.sendFile(path.join(__dirname, '/../server/products.json'))

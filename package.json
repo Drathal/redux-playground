@@ -3,27 +3,23 @@
     "version": "0.0.87",
     "description": "redux-playground",
     "scripts": {
-        "test": "better-npm-run test:coverage",
-        "test:watch": "better-npm-run test --reporter min --no-exit --watch --watch-extensions js,json",
+        "test": "better-npm-run test",
+        "test:watch": "better-npm-run test:watch",
         "build": "better-npm-run build:production",
         "start": "better-npm-run start",
         "start:dev": "better-npm-run start:dev",
-        "dev": "better-npm-run start:dev"
-    },
-    "engines": {
-        "node": ">=5.10.0",
-        "npm": ">=3.8.3"
+        "dev": "npm-run-all --parallel start:dev test:watch"
     },
     "betterScripts": {
         "test": {
-            "command": "mocha",
+            "command": "babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --reporter spec",
             "env": {
                 "BABEL_ENV": "test",
                 "NODE_ENV": "test"
             }
         },
-        "test:coverage": {
-            "command": "babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha",
+        "test:watch": {
+            "command": "nodemon --exec babel-node node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --reporter min",
             "env": {
                 "BABEL_ENV": "test",
                 "NODE_ENV": "test"
@@ -42,7 +38,7 @@
             }
         },
         "build:production": {
-            "command": "webpack --config webpack.config.js -p && cp ./src/app/index.html ./build && cp ./server/server.prod.js ./build/index.js",
+            "command": "rimraf build && webpack --config webpack.config.js -p && cp ./src/app/index.html ./build && cp ./server/server.prod.js ./build/index.js",
             "env": {
                 "BABEL_ENV": "production",
                 "NODE_ENV": "production"
@@ -54,13 +50,16 @@
         "type": "git",
         "url": "https://github.com/drathal/redux-playground.git"
     },
+    "engines": {
+        "node": ">=5.10.0",
+        "npm": ">=3.8.3"
+    },
     "dependencies": {
         "axios": "^0.10.0",
         "express": "^4.13.4",
         "i18next": "^2.5.1",
         "i18next-browser-languagedetector": "^0.3.0",
         "i18next-xhr-backend": "^0.5.3",
-        "js-beautify": "^1.6.2",
         "normalize.css": "^4.1.1",
         "react": "^15.0.1",
         "react-addons-css-transition-group": "^15.0.1",
@@ -74,6 +73,7 @@
         "redux-thunk": "^2.0.1"
     },
     "devDependencies": {
+        "js-beautify": "^1.6.2",
         "babel-cli": "^6.7.7",
         "babel-core": "^6.7.4",
         "babel-loader": "^6.2.4",
@@ -85,6 +85,7 @@
         "babel-preset-react": "^6.5.0",
         "babel-preset-react-hmre": "^1.1.1",
         "babel-preset-stage-0": "^6.5.0",
+        "babel-watch": "^2.0.2",
         "better-npm-run": "0.0.8",
         "bundle-loader": "^0.5.4",
         "chai": "^3.5.0",
@@ -105,8 +106,11 @@
         "istanbul": "^0.4.3",
         "jsdom": "^8.4.0",
         "json-loader": "^0.5.4",
+        "local-web-server": "^1.2.2",
         "mocha": "^2.4.5",
         "node-sass": "^3.4.2",
+        "nodemon": "^1.9.1",
+        "npm-run-all": "^1.8.0",
         "pretty-error": "^2.0.0",
         "react-addons-test-utils": "^15.0.1",
         "redux-devtools": "^3.1.1",

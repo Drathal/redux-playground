@@ -6,7 +6,8 @@ import style from './style'
 
 const ProductList = (props) => {
 
-    const {t} = props;
+    const {t} = props
+
     const products = product => <Panel header={ product.description }
                                     bsStyle="primary"
                                     className={ 'product-' + product.id + ' ' + style.productCard }
@@ -46,4 +47,4 @@ ProductList.propTypes = {
     deleteProduct: PropTypes.func.isRequired
 }
 
-export default translate(['ProductList', 'common'])(ProductList);
+export default translate(['ProductList', 'common'])(ProductList)
