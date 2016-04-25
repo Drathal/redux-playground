@@ -7,7 +7,7 @@ import products from '../redux/modules/products'
 
 var enhancer
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
     enhancer = compose(
         applyMiddleware(promiseMiddleware, thunkMiddleware),
         DevTools.instrument()

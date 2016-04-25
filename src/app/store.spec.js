@@ -8,8 +8,7 @@ describe('store', () => {
     const product2 = {'id': 2, 'description': 'product 2'}
     const product3 = {'id': 3, 'description': 'product 3'}
 
-    it('can dispatch actions', () => {
-
+    it('can dispatch product actions', () => {
         const store = makeStore();
         const stateBefore = {products: []}
         const stateAfter = {products: [{...product1}, {...product2}]}
@@ -22,9 +21,7 @@ describe('store', () => {
         store.dispatch(productAction.addProduct(product3))
         store.dispatch(productAction.deleteProduct(3))
 
-
         expect(store.getState()).to.deep.equal(stateAfter)
-
-    });
+    })
 
 });

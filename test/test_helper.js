@@ -1,6 +1,10 @@
 import register from 'ignore-styles'
 register(['.sass', '.scss', '.css', '.png', '.jpg', '.gif', '.svg'])
 
+if (!process.env.NODE_ENV && !process.env.BABEL_ENV) {
+    process.env.NODE_ENV = process.env.BABEL_ENV = 'test'
+}
+
 var path = require('path')
 var jsdom = require('jsdom').jsdom;
 

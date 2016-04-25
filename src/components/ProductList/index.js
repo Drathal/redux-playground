@@ -25,7 +25,7 @@ const ProductList = (props) => {
     return (
         <div>
             <h3>{ t('title') }</h3>
-            <Button className={ style.addProductButton } onClick={ props.addProduct.bind(this) }>
+            <Button className={ 'addProduct ' + style.addProductButton } onClick={ props.addProduct.bind(this) }>
                 { t('addProductButton') }
             </Button>
             <div className={ style.products }>

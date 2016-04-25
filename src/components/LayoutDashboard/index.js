@@ -81,7 +81,7 @@ const LayoutDashboard = (props) => {
                     { props.children }
                 </div>
             </div>
-            { process.env.NODE_ENV !== 'production' && <DevTools /> }
+            { process.env.NODE_ENV === 'development' && <DevTools /> }
         </div>
     )
 }
