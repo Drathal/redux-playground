@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import config from '../../../config/default'
 
 import { getProducts } from '../../api/product'
 import ProductsList from '../../components/ProductList'
@@ -20,7 +21,7 @@ export default class ProductListContainer extends Component {
     }
 
     componentDidMount = function() {
-        getProducts().then(response => {
+        getProducts(config.endpoint.productApi).then(response => {
             response.data.map(product => {
                 this.props.addProduct(product)
             })
@@ -28,8 +29,6 @@ export default class ProductListContainer extends Component {
     }
 
     render() {
-        return (<ProductsList products={ this.props.products }
-                              addProduct={ this._doAddProduct.bind(this) }
-                              deleteProduct={ this._doDeleteProduct.bind(this) } />)
+        return (<ProductsList products={ this.props.products } addProduct={ this._doAddProduct.bind(this) } deleteProduct={ this._doDeleteProduct.bind(this) } />)
     }
 }
