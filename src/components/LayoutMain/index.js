@@ -12,7 +12,7 @@ const LayoutMain = (props) => {
     let NAV_LINKS = [
         {
             title: t('productLink'),
-            link: '/products'
+            link: '/dashboard/products'
         },
         {
             title: t('notFoundLink'),

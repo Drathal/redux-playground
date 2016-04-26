@@ -62,8 +62,8 @@ var plugins = [
 
 if (!isProduction) {
     plugins.push(new webpack.HotModuleReplacementPlugin())
-    entry.app.push('webpack-hot-middleware/client?noInfo=true')
-    entry.vendor.push('webpack-hot-middleware/client?noInfo=true')
+    entry.app.push('webpack-hot-middleware/client')
+    entry.vendor.push('webpack-hot-middleware/client')
 }
 
 if (isProduction) {
