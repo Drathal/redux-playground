@@ -55,6 +55,7 @@ var plugins = [
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.MinChunkSizePlugin({minChunkSize: 51200}),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: Infinity, filename: 'vendor.js'}),
     new ExtractTextPlugin('app.css', {allChunks: true})
