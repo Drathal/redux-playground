@@ -12,7 +12,7 @@ module.exports = (wallaby) => {
             {pattern: 'src/**/*.svg', load: false},
             {pattern: 'src/**/*.css', load: false},
             {pattern: 'src/**/*.scss', load: false},
-            {pattern: 'node_modules/**/style.scss', load: false},
+            {pattern: 'config/*.js'},
             {pattern: 'src/**/*.js'},
             {pattern: 'test/test_helper.js'},
             {pattern: 'test/i18n.js'},
@@ -29,7 +29,6 @@ module.exports = (wallaby) => {
         },
         'testFramework': 'mocha',
         bootstrap: function(w) {
-            require('ignore-styles')
             require('./test/test_helper.js')
         },
         debug: true
