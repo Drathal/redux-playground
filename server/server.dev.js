@@ -3,17 +3,27 @@
 var path = require('path')
 var fs = require('fs')
 var webpack = require('webpack')
-var webpackDevMiddleware = require('webpack-dev-middleware')
-var webpackHotMiddleware = require('webpack-hot-middleware')
-var express = require('express');
+var express = require('express')
+var proxy = require('proxy-middleware');
+var url = require('url');
+var WebpackDevServer = require('webpack-dev-server')
 var config = require('../webpack.config')
-
-var app = new express()
 var port = 3000
 
-var compiler = webpack(config)
-app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}))
-app.use(webpackHotMiddleware(compiler))
+var app = new express()
+var appHot = new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    hot: true,
+    quiet: true,
+    noInfo: true,
+    historyApiFallback: true,
+    stats: {
+        colors: true
+    }
+})
+
+app.use('/build', proxy(url.parse('http://localhost:' + (port + 1) + '/build')));
+
 
 app.get('/api/product', function(req, res) {
     res.sendFile(path.join(__dirname, '/../server/products.json'))
@@ -32,3 +42,5 @@ app.listen(port, function(error) {
         console.info('==> Open up http://localhost:%s/ in your browser.', port)
     }
 })
+
+appHot.listen(port + 1, 'localhost', function() {})

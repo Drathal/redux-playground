@@ -62,8 +62,12 @@ var plugins = [
 
 if (isDevelopment) {
     plugins.push(new webpack.HotModuleReplacementPlugin())
-    entry.app.push('webpack-hot-middleware/client?reload=false')
-    entry.vendor.push('webpack-hot-middleware/client?reload=false')
+    entry.app.push('webpack-dev-server/client?http://localhost:3001')
+    entry.app.push('webpack/hot/only-dev-server')
+    entry.app.push('react-hot-loader/patch')
+    entry.vendor.push('webpack-dev-server/client?http://localhost:3001')
+    entry.vendor.push('webpack/hot/only-dev-server')
+    entry.vendor.push('react-hot-loader/patch')
 }
 
 if (isProduction) {

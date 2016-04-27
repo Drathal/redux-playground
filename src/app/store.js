@@ -7,7 +7,7 @@ import { routerMiddleware } from 'react-router-redux'
 import DevTools from '../containers/DevTools';
 import rootReducer from '../redux/modules/root'
 
-export default function makeStore(initialState = {}, history) {
+export default function makeStore(history, initialState = {}) {
 
     let middlewares = applyMiddleware(thunkMiddleware, promiseMiddleware, routerMiddleware(history))
 

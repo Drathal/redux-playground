@@ -12,7 +12,7 @@ const ProductList = (props) => {
                                     bsStyle="primary"
                                     className={ 'product-' + product.id + ' ' + style.productCard }
                                     key={ product.id }>
-                                    <img src={ (productPicture.length > 0 && productPicture) || '' } />
+                                    <img className={ 'product-image-' + product.id + ' ' + style.productImage } src={ (productPicture.length > 0 && productPicture) || '' } />
                                     <Button className={ 'deleteProduct' + ' deleteProduct-' + product.id } onClick={ props.deleteProduct.bind(this, product) }>
                                         { t('deleteProductButton') }
                                     </Button>
@@ -25,7 +25,7 @@ const ProductList = (props) => {
 
     return (
         <div className={ 'productsWrapper ' + style.productsWrapper }>
-            <h3>{ t('title') }</h3>
+            <h2>{ t('title') }</h2>
             <Button className={ 'addProduct ' + style.addProductButton } onClick={ props.addProduct.bind(this) }>
                 { t('addProductButton') }
             </Button>
