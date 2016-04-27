@@ -2,9 +2,6 @@ import { ADD_PRODUCT, DELETE_PRODUCT } from './actions';
 
 const initialState = []
 
-/**
- * main product reducer
- */
 export default (state = initialState, action) => {
 
     const inList = (product) => state.filter((i => i.id === product.id)).length > 0

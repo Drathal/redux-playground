@@ -1,28 +1,29 @@
+import { createStore, applyMiddleware, compose } from 'redux'
+
 import thunkMiddleware from 'redux-thunk'
 import promiseMiddleware from 'redux-promise'
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import DevTools from '../containers/DevTools';
+import { routerMiddleware } from 'react-router-redux'
 
-import products from '../redux/modules/products'
+import DevTools from '../containers/DevTools';
 import rootReducer from '../redux/modules/root'
 
-var enhancer
+export default function makeStore(initialState = {}, history) {
 
-if (process.env.NODE_ENV === 'development') {
-    enhancer = compose(
-        applyMiddleware(promiseMiddleware, thunkMiddleware),
-        DevTools.instrument()
-    );
-} else {
-    enhancer = compose(
-        applyMiddleware(promiseMiddleware, thunkMiddleware)
-    );
-}
+    let middlewares = applyMiddleware(thunkMiddleware, promiseMiddleware, routerMiddleware(history))
 
-export default function makeStore(initialState) {
-    return createStore(
-        rootReducer,
-        initialState,
-        enhancer
-    )
+    if (process.env.NODE_ENV === 'development') {
+        middlewares = compose(middlewares, DevTools.instrument())
+    }
+
+    const store = middlewares(createStore)(rootReducer, initialState)
+
+    // hot module replacement for reducer
+    if (module.hot) {
+        module.hot.accept('../redux/modules/root', () => {
+            const nextRootReducer = require('../redux/modules/root').default
+            store.replaceReducer(nextRootReducer)
+        })
+    }
+
+    return store
 }
