@@ -3,6 +3,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path')
 var webpack = require('webpack')
 var isProduction = process.env.NODE_ENV === 'production'
+var isDevelopment = !isProduction
 
 console.log('Bundling Application for:', process.env.NODE_ENV)
 
@@ -51,20 +52,18 @@ var loaders = [
 var preLoaders = []
 
 var plugins = [
-    new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)}),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.MinChunkSizePlugin({minChunkSize: 51200}),
-    new webpack.NoErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: Infinity, filename: 'vendor.js'}),
     new ExtractTextPlugin('app.css', {allChunks: true})
 ]
 
-if (!isProduction) {
+if (isDevelopment) {
     plugins.push(new webpack.HotModuleReplacementPlugin())
-    entry.app.push('webpack-hot-middleware/client')
-    entry.vendor.push('webpack-hot-middleware/client')
+    entry.app.push('webpack-hot-middleware/client?reload=false')
+    entry.vendor.push('webpack-hot-middleware/client?reload=false')
 }
 
 if (isProduction) {
@@ -81,7 +80,7 @@ module.exports = {
             '.json'
         ]
     },
-    devtool: isProduction ? 'source-map' : 'inline-source-map',
+    devtool: isProduction ? 'source-map' : 'eval',
     entry,
     output: {
         path: path.join(__dirname, 'build'),
@@ -93,6 +92,7 @@ module.exports = {
         'jsdom': 'window',
         'react/lib/ExecutionEnvironment': true
     },
+    _hotPort: 8888,
     module: {
         preLoaders,
         loaders
