@@ -15,15 +15,11 @@ describe('component view <ProductList />', () => {
     const onDeleteProduct = sinon.spy()
 
     const ProductListRender = mount(<I18nextProvider i18n={ i18n(messages) }>
-                                        <ProductsList products={ products }
-                                                      addProduct={ onAddProduct }
-                                                      deleteProduct={ onDeleteProduct } />
+                                        <ProductsList products={ products } addProduct={ onAddProduct } deleteProduct={ onDeleteProduct } />
                                     </I18nextProvider>);
 
     const ProductListEmptyRender = mount(<I18nextProvider i18n={ i18n(messages) }>
-                                             <ProductsList products={ [] }
-                                                           addProduct={ onAddProduct }
-                                                           deleteProduct={ onDeleteProduct } />
+                                             <ProductsList products={ [] } addProduct={ onAddProduct } deleteProduct={ onDeleteProduct } />
                                          </I18nextProvider>);
 
     it('can render messages without a product', () => {
