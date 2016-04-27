@@ -4,6 +4,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import DevTools from '../containers/DevTools';
 
 import products from '../redux/modules/products'
+import rootReducer from '../redux/modules/root'
 
 var enhancer
 
@@ -18,10 +19,7 @@ if (process.env.NODE_ENV === 'development') {
     );
 }
 
-const rootReducer = combineReducers({products})
-
 export default function makeStore(initialState) {
-
     return createStore(
         rootReducer,
         initialState,

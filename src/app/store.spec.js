@@ -1,6 +1,6 @@
-import { expect } from 'chai';
+import { expect } from 'chai'
 import makeStore from './store'
-import * as productAction from '../redux/modules/products/actions';
+import * as productAction from '../redux/modules/products/actions'
 
 describe('store', () => {
 
@@ -10,10 +10,10 @@ describe('store', () => {
 
     it('can dispatch product actions', () => {
         const store = makeStore();
-        const stateBefore = {products: []}
-        const stateAfter = {products: [{...product1}, {...product2}]}
+        const stateBefore = []
+        const stateAfter = [{...product1}, {...product2}]
 
-        expect(store.getState()).to.deep.equal(stateBefore)
+        expect(store.getState().products).to.deep.equal(stateBefore)
 
         store.dispatch(productAction.addProduct(product1))
         store.dispatch(productAction.addProduct(product2))
@@ -21,7 +21,7 @@ describe('store', () => {
         store.dispatch(productAction.addProduct(product3))
         store.dispatch(productAction.deleteProduct(3))
 
-        expect(store.getState()).to.deep.equal(stateAfter)
+        expect(store.getState().products).to.deep.equal(stateAfter)
     })
 
 });
