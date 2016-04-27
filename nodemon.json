@@ -4,5 +4,6 @@
         "src/",
         "server/",
         "test/"
-    ]
+    ],
+    "ext": "js"
 }
