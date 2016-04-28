@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { translate } from 'react-i18next';
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router'
-import DevTools from '../../containers/DevTools';
 import style from './style'
 
 const LayoutMain = (props) => {
@@ -52,7 +51,6 @@ const LayoutMain = (props) => {
                     { props.children }
                 </div>
             </div>
-            { process.env.NODE_ENV === 'development' && <DevTools /> }
         </div>
     )
 }
