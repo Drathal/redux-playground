@@ -10,11 +10,11 @@ app.get('/api/product', function(req, res) {
     res.sendFile(path.join(__dirname, '/../server/products.json'))
 })
 
-app.get('/', function(req, res) {
+app.use('/build', express.static(path.join(__dirname, '/')));
+
+app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'))
 })
-
-app.use('/build', express.static(path.join(__dirname, '/')));
 
 app.listen(port, function(error) {
     if (error) {
