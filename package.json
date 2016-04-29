@@ -60,6 +60,7 @@
     "i18next": "^2.5.1",
     "i18next-browser-languagedetector": "^0.3.0",
     "i18next-xhr-backend": "^0.5.3",
+    "nconf": "^0.8.4",
     "normalize.css": "^4.1.1",
     "react": "^15.0.1",
     "react-addons-css-transition-group": "^15.0.1",
