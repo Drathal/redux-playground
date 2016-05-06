@@ -5,7 +5,6 @@ if (!process.env.NODE_ENV && !process.env.BABEL_ENV) {
     process.env.NODE_ENV = process.env.BABEL_ENV = 'test'
 }
 
-var path = require('path')
 var jsdom = require('jsdom').jsdom;
 
 var pe = require('pretty-error').start()
@@ -24,4 +23,10 @@ Object.keys(document.defaultView).forEach((property) => {
     }
 });
 
-global.navigator = {userAgent: 'node.js'}
+global.navigator = { userAgent: 'node.js' }
+
+const chai = require('chai')
+const sinonChai = require('sinon-chai')
+global.expect = chai.expect;
+global.sinon = require('sinon');
+chai.use(sinonChai);
