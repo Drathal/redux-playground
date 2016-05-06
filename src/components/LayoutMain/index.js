@@ -6,9 +6,9 @@ import style from './style'
 
 const LayoutMain = (props) => {
 
-    const {t} = props;
+    const { t } = props
 
-    let NAV_LINKS = [
+    const NAV_LINKS = [
         {
             title: t('productLink'),
             link: '/dashboard/products'
@@ -46,8 +46,8 @@ const LayoutMain = (props) => {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <div className={ style.container + ' app-content' }>
-                <div className={ style.containerBody + ' app-content-body' }>
+            <div className={ `${style.container} app-content` }>
+                <div className={ `${style.containerBody} app-content-body` }>
                     { props.children }
                 </div>
             </div>
@@ -55,5 +55,10 @@ const LayoutMain = (props) => {
     )
 }
 
+LayoutMain.propTypes = {
+    t: PropTypes.func.isRequired,
+    activePage: PropTypes.func,
+    children: PropTypes.node
+}
 
 export default translate(['LayoutMain', 'common'])(LayoutMain);

@@ -5,21 +5,19 @@ export const initialState = {
     available: ['en', 'de']
 }
 
-/**
- * main product reducer
- */
 export default (state = initialState, action) => {
 
-    const isAvailableLanguage = (language_code) => state.available && state.available.filter((i => i === language_code)).length > 0
+    const isAvailableLanguage = (languageCode) => state.available && state.available.filter(i => i === languageCode).length > 0
 
     switch (action.type) {
-        case SET_LANGAUAGE:
-            if (!isAvailableLanguage(action.language_code)) return state
-            return {
-                ...state,
-                current: action.language_code
-            }
-        default:
-            return state
+    case SET_LANGAUAGES:
+    case SET_LANGAUAGE:
+        if (!isAvailableLanguage(action.languageCode)) return state
+        return {
+            ...state,
+            current: action.languageCode
+        }
+    default:
+        return state
     }
 }

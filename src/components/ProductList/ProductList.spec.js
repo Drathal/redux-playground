@@ -1,6 +1,6 @@
 import React from 'react';
 import { expect } from 'chai';
-import { mount, render, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import sinon from 'sinon';
 import { I18nextProvider } from 'react-i18next'
 import i18n from '../../../test/i18n'
@@ -10,7 +10,7 @@ import messages from './i18n/en.json'
 
 describe('component view <ProductList />', () => {
 
-    const products = [{id: 777, description: 'product description'}]
+    const products = [{ id: 777, description: 'product description' }]
     const onAddProduct = sinon.spy()
     const onDeleteProduct = sinon.spy()
 

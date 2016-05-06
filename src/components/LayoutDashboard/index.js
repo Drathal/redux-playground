@@ -6,9 +6,9 @@ import style from './style'
 
 const LayoutDashboard = (props) => {
 
-    const {t} = props;
+    const { t } = props;
 
-    let NAV_LINKS = [
+    const NAV_LINKS = [
         {
             title: t('productLink'),
             link: '/products'
@@ -46,17 +46,17 @@ const LayoutDashboard = (props) => {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <aside className={ style.sidemenu + ' app-aside' }>
-                <div className={ style.sidemenuBody }>
-                    <nav class="navi">
-                        <ul class="nav">
+            <aside className={ `${style.sidemenu} app-aside` }>
+                <div className={ `${style.sidemenuBody}` }>
+                    <nav className="navi">
+                        <ul className="nav">
                             <li>
                                 <span>Navigation</span>
                             </li>
-                            <li class="line"></li>
+                            <li className="line"></li>
                             <li>
                                 <a href="">menu 1</a>
-                                <ul class="nav nav-sub">
+                                <ul className="nav nav-sub">
                                     <li>
                                         <a href="">menu 2</a>
                                     </li>
@@ -75,8 +75,8 @@ const LayoutDashboard = (props) => {
                     </nav>
                 </div>
             </aside>
-            <div className={ style.container + ' app-content' }>
-                <div className={ style.containerBody + ' app-content-body' }>
+            <div className={ `${style.container} app-content` }>
+                <div className={ `${style.containerBody} app-content-body` }>
                     { props.children }
                 </div>
             </div>
@@ -84,5 +84,10 @@ const LayoutDashboard = (props) => {
     )
 }
 
+LayoutDashboard.propTypes = {
+    t: PropTypes.func.isRequired,
+    activePage: PropTypes.func,
+    children: PropTypes.node
+}
 
 export default translate(['LayoutDashboard', 'common'])(LayoutDashboard);

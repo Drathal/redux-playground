@@ -1,8 +1,3 @@
 import axios from 'axios';
 
-export function getProducts(endpoint) {
-    return axios.get(endpoint)
-        .then(response => {
-            return response;
-        });
-}
+export const getProducts = endpoint => axios.get(endpoint).then(response => response)

@@ -5,11 +5,11 @@ import { I18nextProvider } from 'react-i18next'
 import i18n from '../../app/i18n/i18n'
 import routes from '../../app/routes'
 
-const Root = ({store, history}) => <I18nextProvider i18n={ i18n }>
-                                       <Provider store={ store }>
-                                           <Router children={ routes } history={ history } />
-                                       </Provider>
-                                   </I18nextProvider>
+const Root = ({ store, history }) => <I18nextProvider i18n={ i18n }>
+                                         <Provider store={ store }>
+                                             <Router children={ routes } history={ history } />
+                                         </Provider>
+                                     </I18nextProvider>
 
 Root.propTypes = {
     store: PropTypes.object.isRequired,

@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import deepFreeze from 'deep-freeze'
 
 import languageReducer from './index'
-import { setLanguage, setLanguages } from './actions'
+import { setLanguage } from './actions'
 
 describe('reducer language', () => {
 
