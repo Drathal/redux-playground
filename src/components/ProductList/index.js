@@ -13,7 +13,7 @@ const ProductList = (props) => {
                                     className={ `product-${product.id} ${style.productCard}` }
                                     key={ product.id }>
                                     <img className={ `product-image-${product.id} ${style.productImage}` } src={ productPicture.length > 0 && productPicture || '' } />
-                                    <Button className={ `deleteProduct deleteProduct-${product.id}` } onClick={ props.deleteProduct.bind(this, product) }>
+                                    <Button className={ `deleteProduct deleteProduct-${product.id} ${style.deleteProductButton}` } onClick={ props.deleteProduct.bind(this, product) }>
                                         { t('deleteProductButton') }
                                     </Button>
                                     <Button className={ `addToCart addToCart-${product.id}` }>
@@ -24,7 +24,7 @@ const ProductList = (props) => {
     const noProducts = <h4>{ t('noProducts') }</h4>
 
     return (
-        <div className={ `productsWrapper ${style.productsWrapper} xxxx` }>
+        <div className={ `productsWrapper ${style.productsWrapper}` }>
             <h2>{ t('title') }</h2>
             <Button className={ `addProduct ${style.addProductButton}` } onClick={ props.addProduct.bind(this) }>
                 { t('addProductButton') }
@@ -34,18 +34,23 @@ const ProductList = (props) => {
                 { props.products.length === 0 && noProducts }
             </div>
         </div>
-    )
-}
+    ) }
 
 ProductList.propTypes = {
-    messages: PropTypes.object,
     products: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         description: PropTypes.string.isRequired
     })).isRequired,
-    addProduct: PropTypes.func.isRequired,
-    t: PropTypes.func.isRequired,
-    deleteProduct: PropTypes.func.isRequired
+    t: PropTypes.func,
+    addProduct: PropTypes.func,
+    deleteProduct: PropTypes.func
 }
+
+ProductList.defaultProps = {
+    products: [],
+    t: () => {},
+    addProduct: () => {},
+    deleteProduct: () => {}
+};
 
 export default translate(['ProductList', 'common'])(ProductList)
