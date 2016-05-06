@@ -1,5 +1,4 @@
 import React from 'react'
-import { expect } from 'chai'
 import { mount } from 'enzyme'
 import proxyquire from 'proxyquire'
 import { Provider } from 'react-redux'
