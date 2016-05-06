@@ -53,11 +53,11 @@ var preLoaders = []
 
 var plugins = [
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)}),
+    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.MinChunkSizePlugin({minChunkSize: 51200}),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: Infinity, filename: 'vendor.js'}),
-    new ExtractTextPlugin('app.css', {allChunks: true})
+    new webpack.optimize.MinChunkSizePlugin({ minChunkSize: 51200 }),
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity, filename: 'vendor.js' }),
+    new ExtractTextPlugin('app.css', { allChunks: true })
 ]
 
 if (isDevelopment) {
@@ -71,7 +71,7 @@ if (isDevelopment) {
 }
 
 if (isProduction) {
-    plugins.push(new webpack.optimize.UglifyJsPlugin({mangle: true, compress: {warnings: false}}))
+    plugins.push(new webpack.optimize.UglifyJsPlugin({ mangle: true, compress: { warnings: false } }))
 }
 
 module.exports = {
@@ -84,7 +84,7 @@ module.exports = {
             '.json'
         ]
     },
-    devtool: isProduction ? 'source-map' : 'eval',
+    devtool: isProduction ? 'source-map' : 'eval-cheap-source-map',
     entry,
     output: {
         path: path.join(__dirname, 'build'),
@@ -96,7 +96,7 @@ module.exports = {
         'jsdom': 'window',
         'react/lib/ExecutionEnvironment': true
     },
-    _hotPort: 8888,
+    _hotPort: 3001,
     module: {
         preLoaders,
         loaders

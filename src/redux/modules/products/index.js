@@ -1,8 +1,10 @@
-import { ADD_PRODUCT, DELETE_PRODUCT } from './actions';
+import { ADD_PRODUCT, DELETE_PRODUCT } from './actions'
 
 const initialState = []
 
 export default (state = initialState, action) => {
+
+    console.log('############# reducer', action)
 
     const inList = product => state.filter(i => i.id === product.id).length > 0
     const getPosition = id => state.findIndex(i => i.id === id)
