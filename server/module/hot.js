@@ -4,7 +4,7 @@ import proxy from 'proxy-middleware'
 import url from 'url'
 import config from '../../webpack.config'
 
-var app = new WebpackDevServer(webpack(config), {
+new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
     quiet: false,
