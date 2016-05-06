@@ -18,14 +18,19 @@ const rootEl = document.getElementById('root')
 getProducts(config.endpoint.productApi).then(response => response.data.map(product => store.dispatch(addProduct(product))))
 
 render(
-    <AppContainer component={ Root } props={ { store, history } } />,
+    <AppContainer>
+        <Root store={ store } history={ history } />
+    </AppContainer>,
     rootEl
 );
 
 if (module.hot) {
     module.hot.accept('../containers/Root', () => {
+        const nextRoot = require('../containers/Root').default
         render(
-            <AppContainer component={ require('../containers/Root').default } props={ { store, history } } />,
+            <AppContainer>
+                <nextRoot store={ store } history={ history } />
+            </AppContainer>,
             rootEl
         );
     });

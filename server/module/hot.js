@@ -7,18 +7,14 @@ import config from '../../webpack.config'
 var app = new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
-    quiet: true,
+    quiet: false,
     noInfo: true,
     historyApiFallback: true,
     stats: {
         colors: true
     }
+}).listen(config._hotPort, '0.0.0.0', () => {
+    console.log(`Hot reloading listening on port: ${config._hotPort}`)
 })
-
-export const hotServer = () => {
-    app.listen(config._hotPort, 'localhost', () => {
-        console.log(`Hot reloading listening on port: ${config._hotPort}`)
-    })
-}
 
 export const proxyHandler = proxy(url.parse(`http://localhost:${config._hotPort}${config.output.publicPath}`))
