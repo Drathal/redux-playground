@@ -13,7 +13,7 @@ const ProductList = (props) => {
                                     className={ `product-${product.id} ${style.productCard}` }
                                     key={ product.id }>
                                     <img className={ `product-image-${product.id} ${style.productImage}` } src={ productPicture.length > 0 && productPicture || '' } />
-                                    <Button className={ `deleteProduct deleteProduct-${product.id} ${style.deleteProductButton}` } onClick={ props.deleteProduct.bind(this, product) }>
+                                    <Button className={ `deleteProduct deleteProduct-${product.id} ${style.deleteProductButton}` } onClick={ props.deleteProduct.bind(this, product.id) }>
                                         { t('deleteProductButton') }
                                     </Button>
                                     <Button className={ `addToCart addToCart-${product.id}` }>

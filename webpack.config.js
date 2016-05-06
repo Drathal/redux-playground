@@ -84,7 +84,7 @@ module.exports = {
             '.json'
         ]
     },
-    devtool: isProduction ? 'source-map' : 'eval',
+    devtool: isProduction ? 'source-map' : 'eval-cheap-source-map',
     entry,
     output: {
         path: path.join(__dirname, 'build'),

@@ -13,7 +13,7 @@ new WebpackDevServer(webpack(config), {
     stats: {
         colors: true
     }
-}).listen(config._hotPort, '0.0.0.0', () => {
+}).listen(config._hotPort, 'localhost', () => {
     console.log(`Hot reloading listening on port: ${config._hotPort}`)
 })
 
